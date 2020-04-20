@@ -1,5 +1,5 @@
 # XML and WEB Services student project 
-## Rent-a-car Main App
+## Rent-a-car Agent App
 ### Team X 
 ### Authors
 *   [Vladimir Popović](https://github.com/PopovicV)
