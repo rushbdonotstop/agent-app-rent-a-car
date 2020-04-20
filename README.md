@@ -1,6 +1,6 @@
-# E-Business Systems Security student project 
-## Public Key Infrastructure App
-### Team 15 
+# XML and WEB Services student project 
+## Rent-a-car Main App
+### Team X 
 ### Authors
 *   [Vladimir Popović](https://github.com/PopovicV)
 *   [Ivana Brkić](https://github.com/ivanabrkic)
