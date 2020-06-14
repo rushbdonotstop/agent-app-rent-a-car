@@ -14,6 +14,10 @@ public class Notification {
         this.success = success;
     }
 
+    public Notification(String text) {
+        this.text = text;
+    }
+
     public String getText() {
         return text;
     }
