@@ -87,7 +87,7 @@ export class CartService {
     var cart = new Cart(detailedCart, userId)
     console.log(detailedCart)
     console.log(cart)
-    return this.http.post<boolean>('server/request/request', JSON.stringify(cart), httpOptions);
+    return this.http.post<boolean>('server/request', JSON.stringify(cart), httpOptions);
   }
 
   newCart() {
@@ -95,7 +95,7 @@ export class CartService {
   }
 
   manualRent(request: manualRequest) {
-    return this.http.post<boolean>('server/request/request/physicalRent', JSON.stringify(request), httpOptions);
+    return this.http.post<boolean>('server/request/physicalRent', JSON.stringify(request), httpOptions);
   }
 
 }

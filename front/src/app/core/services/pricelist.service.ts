@@ -13,11 +13,11 @@ export class PricelistService {
   constructor(private http: HttpClient) { }
 
   getPricelists(id : number) {
-    return this.http.get<Pricelist[]>('server/pricelist/pricelist/'+id,  httpOptions);
+    return this.http.get<Pricelist[]>('server/pricelist/'+id,  httpOptions);
   }
 
   minAndMax() {
-    return this.http.get<MinAndMaxPricesDTO>('server/pricelist/pricelist/minAndMax',  httpOptions);
+    return this.http.get<MinAndMaxPricesDTO>('server/pricelist/minAndMax',  httpOptions);
   }
 
   validatePricelists(pricelists : Pricelist[], startDate : Date, endDate : Date) {
@@ -31,6 +31,6 @@ export class PricelistService {
       params : params
     }
 
-    return this.http.post<Pricelist[]>('server/pricelist/pricelist/validatePricelists', pricelists, options);
+    return this.http.post<Pricelist[]>('server/pricelist/validatePricelists', pricelists, options);
   }
 }
