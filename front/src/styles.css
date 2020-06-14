@@ -14,3 +14,11 @@ div.card {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.masthead-subheading{
+  color:rgb(2, 59, 2)
+}
+
+.masthead-heading{
+  color:rgb(231, 196, 101)
+}

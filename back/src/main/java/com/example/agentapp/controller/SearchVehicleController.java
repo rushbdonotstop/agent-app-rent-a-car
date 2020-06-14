@@ -1,12 +1,12 @@
 package com.example.agentapp.controller;
 
 import com.example.agentapp.dto.*;
-import com.example.agentapp.dto.catalogue.VehicleMake;
-import com.example.agentapp.dto.catalogue.VehicleModel;
-import com.example.agentapp.dto.location.Location;
-import com.example.agentapp.dto.pricelist.Pricelist;
-import com.example.agentapp.dto.request.RequestForVehicleDTO;
-import com.example.agentapp.dto.user.UserDTO;
+import com.example.agentapp.model.VehicleMake;
+import com.example.agentapp.model.VehicleModel;
+import com.example.agentapp.model.Location;
+import com.example.agentapp.model.Pricelist;
+import com.example.agentapp.dto.RequestForVehicleDTO;
+import com.example.agentapp.dto.UserDTO;
 import com.example.agentapp.model.User;
 import com.example.agentapp.model.Vehicle;
 import com.example.agentapp.service.*;

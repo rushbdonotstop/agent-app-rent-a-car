@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class Pricelist {
+public class Pricelist implements Comparable<Pricelist>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -128,5 +128,10 @@ public class Pricelist {
                 ", vehicleId=" + vehicleId +
                 ", vehicleDiscount=" + vehicleDiscount +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Pricelist o) {
+        return this.startDate.compareTo(o.startDate);
     }
 }

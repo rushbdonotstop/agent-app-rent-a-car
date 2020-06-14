@@ -4,7 +4,7 @@ import com.example.agentapp.dto.BundleDTO;
 import com.example.agentapp.dto.RequestDTO;
 import com.example.agentapp.dto.RequestForFrontDTO;
 import com.example.agentapp.dto.VehicleMainViewDTO;
-import com.example.agentapp.dto.user.UserDTO;
+import com.example.agentapp.dto.UserDTO;
 import com.example.agentapp.model.Bundle;
 import com.example.agentapp.model.Request;
 import com.example.agentapp.model.enums.Status;

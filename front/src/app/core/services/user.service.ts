@@ -12,6 +12,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsername(id : number) {
-    return this.http.get<LoginRequestDTO>('server/user/user/username/'+id,  httpOptions);
+    return this.http.get<LoginRequestDTO>('server/user/username/'+id,  httpOptions);
   }
 }

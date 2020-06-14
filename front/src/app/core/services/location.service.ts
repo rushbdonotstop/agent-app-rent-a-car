@@ -14,18 +14,18 @@ export class LocationService {
   constructor(private http: HttpClient) { }
 
   create(location : VehicleLocation){
-    return this.http.post<VehicleLocation>('server/location/location/', location, httpOptions);
+    return this.http.post<VehicleLocation>('server/location/', location, httpOptions);
   }
 
   getCitiesByState(stateId : number) {
-    return this.http.get<City[]>('server/location/location/citiesByState/'+stateId,  httpOptions);
+    return this.http.get<City[]>('server/location/citiesByState/'+stateId,  httpOptions);
   }
 
   getStates() {
-    return this.http.get<State[]>('server/location/location/state/',  httpOptions);
+    return this.http.get<State[]>('server/location/state/',  httpOptions);
   }
 
   getLocation(id : number) {
-    return this.http.get<VehicleLocation>('server/location/location/'+id,  httpOptions);
+    return this.http.get<VehicleLocation>('server/location/'+id,  httpOptions);
   }
 }
