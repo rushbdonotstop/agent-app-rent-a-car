@@ -42,4 +42,11 @@ public class VehicleTransmission {
                 ", value='" + value + '\'' +
                 '}';
     }
+
+    public com.example.agentapp.xmlmodel.catalogue.vehicle_transmission.VehicleTransmission toXML(VehicleTransmission vehicleTransmission){
+        com.example.agentapp.xmlmodel.catalogue.vehicle_transmission.VehicleTransmission vehicleTransmissionXML = new com.example.agentapp.xmlmodel.catalogue.vehicle_transmission.VehicleTransmission();
+        vehicleTransmissionXML.setId(vehicleTransmission.getId());
+        vehicleTransmissionXML.setValue(vehicleTransmission.getValue());
+        return vehicleTransmissionXML;
+    }
 }

@@ -16,4 +16,5 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
 
     @Query("SELECT l.city FROM Location l WHERE l.state.id = ?1")
     SortedSet<City> getCitiesByState(Long stateId);
+
 }

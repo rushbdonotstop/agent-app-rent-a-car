@@ -3,7 +3,13 @@ package com.example.agentapp.model;
 import com.example.agentapp.model.builder.PricelistBuilder;
 
 import javax.persistence.*;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.GregorianCalendar;
 
 @Entity
 public class Pricelist implements Comparable<Pricelist>{
@@ -13,10 +19,10 @@ public class Pricelist implements Comparable<Pricelist>{
     private Long id;
 
     @Column(name = "start_date", nullable = false)
-    private LocalDate startDate;
+    private LocalDateTime startDate;
 
     @Column(name = "end_date", nullable = false)
-    private LocalDate endDate;
+    private LocalDateTime endDate;
 
     @Column(name = "price", nullable = false)
     private float price;
@@ -37,7 +43,7 @@ public class Pricelist implements Comparable<Pricelist>{
     public Pricelist() {
     }
 
-    public Pricelist(LocalDate startDate, LocalDate endDate, float price, float priceByMile, float priceCollision, Long vehicleId, VehicleDiscount vehicleDiscount) {
+    public Pricelist(LocalDateTime startDate, LocalDateTime endDate, float price, float priceByMile, float priceCollision, Long vehicleId, VehicleDiscount vehicleDiscount) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.price = price;
@@ -60,19 +66,19 @@ public class Pricelist implements Comparable<Pricelist>{
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
@@ -133,5 +139,35 @@ public class Pricelist implements Comparable<Pricelist>{
     @Override
     public int compareTo(Pricelist o) {
         return this.startDate.compareTo(o.startDate);
+    }
+
+    public com.example.agentapp.xmlmodel.pricelist.Pricelist toXML(Pricelist pricelist) throws DatatypeConfigurationException {
+        com.example.agentapp.xmlmodel.pricelist.Pricelist pricelistXML = new com.example.agentapp.xmlmodel.pricelist.Pricelist();
+        pricelistXML.setId(pricelist.getId());
+        pricelistXML.setPrice(pricelist.getPrice());
+        pricelistXML.setPriceByMile(pricelist.getPriceByMile());
+        pricelistXML.setPriceCollision(pricelist.getPriceCollision());
+
+        LocalDate date = pricelist.getStartDate().toLocalDate();
+        GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
+        XMLGregorianCalendar xcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
+        pricelistXML.setStartDate(xcal);
+
+        date = pricelist.getEndDate().toLocalDate();
+        gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
+        xcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+
+        pricelistXML.setEndDate(xcal);
+
+        com.example.agentapp.xmlmodel.pricelist.vehicle_discount.VehicleDiscount vehicleDiscountXML = new com.example.agentapp.xmlmodel.pricelist.vehicle_discount.VehicleDiscount();
+
+        vehicleDiscountXML.setDiscount(pricelist.getVehicleDiscount().getDiscount());
+        vehicleDiscountXML.setId(pricelist.getVehicleDiscount().getId());
+        vehicleDiscountXML.setNumDays(pricelist.getVehicleDiscount().getNumDays());
+
+        pricelistXML.setVehicleDiscount(vehicleDiscountXML);
+
+        return pricelistXML;
     }
 }

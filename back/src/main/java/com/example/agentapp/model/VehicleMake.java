@@ -43,5 +43,12 @@ public class VehicleMake {
                 '}';
     }
 
+    public com.example.agentapp.xmlmodel.catalogue.vehicle_make.VehicleMake toXML(VehicleMake vehicleMake){
+        com.example.agentapp.xmlmodel.catalogue.vehicle_make.VehicleMake vehicleMakeXML = new com.example.agentapp.xmlmodel.catalogue.vehicle_make.VehicleMake();
+        vehicleMakeXML.setId(vehicleMake.getId());
+        vehicleMakeXML.setValue(vehicleMake.getValue());
+        return vehicleMakeXML;
+    }
+
 
 }

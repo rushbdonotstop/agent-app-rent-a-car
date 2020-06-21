@@ -36,7 +36,7 @@ public class UserDetailsController {
      * @return returns object of type UserDetailsDTO
      */
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDetailsDTO> getOneUserDetails(@PathVariable String id) {
+    public ResponseEntity<UserDetailsDTO> getOneUserDetails(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(userDetailsService.getOneUserDetails(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class UserDetailsController {
      * @return returns notification
      */
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> postOneUserDetails(@RequestBody UserDetailsDTO userDetailsDTO, @PathVariable String id) {
+    public ResponseEntity<Notification> postOneUserDetails(@RequestBody UserDetailsDTO userDetailsDTO, @PathVariable Long id) {
         try {
             userDetailsService.addNewUserDetails(id, userDetailsDTO);
             return new ResponseEntity<Notification>(new Notification("Adding user details to a user successfully done.", true), HttpStatus.OK);
@@ -76,7 +76,7 @@ public class UserDetailsController {
      * @return returns notification
      */
     @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> putOneUserDetails(@PathVariable String id, @RequestBody UserDetailsDTO userDetailsDTO) {
+    public ResponseEntity<Notification> putOneUserDetails(@PathVariable Long id, @RequestBody UserDetailsDTO userDetailsDTO) {
         try {
             userDetailsService.changeUserDetails(id, userDetailsDTO);
             return new ResponseEntity<Notification>(new Notification("Changing user details to a user successfully done.", true), HttpStatus.OK);
@@ -96,7 +96,7 @@ public class UserDetailsController {
      * @return returns notification
      */
     @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> deleteOneUserDetails(@PathVariable String id, @RequestBody UserDetailsDTO userDetailsDTO) {
+    public ResponseEntity<Notification> deleteOneUserDetails(@PathVariable Long id, @RequestBody UserDetailsDTO userDetailsDTO) {
         try {
             userDetailsService.deleteUserDetails(id, userDetailsDTO);
             return new ResponseEntity<Notification>(new Notification("Deleting user details to a user successfully done.", true), HttpStatus.OK);

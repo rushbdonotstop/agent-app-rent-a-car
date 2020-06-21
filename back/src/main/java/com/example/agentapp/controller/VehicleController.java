@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -27,6 +26,7 @@ public class VehicleController {
     @PostMapping(value = "", consumes= MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Vehicle> create(@RequestBody Vehicle vehicle) throws Exception {
         Vehicle vehicle1 = vehicleService.create(vehicle);
+
         return new ResponseEntity<>(vehicle1, HttpStatus.OK);
     }
 

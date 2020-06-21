@@ -71,4 +71,29 @@ public class Location {
                 ", street=" + street +
                 '}';
     }
+
+    public com.example.agentapp.xmlmodel.location.Location toXML(Location location){
+
+        com.example.agentapp.xmlmodel.location.Location locationXML = new com.example.agentapp.xmlmodel.location.Location();
+        com.example.agentapp.xmlmodel.location.state.State state = new com.example.agentapp.xmlmodel.location.state.State();
+        com.example.agentapp.xmlmodel.location.city.City city = new com.example.agentapp.xmlmodel.location.city.City();
+        com.example.agentapp.xmlmodel.location.street.Street street = new com.example.agentapp.xmlmodel.location.street.Street();
+
+        state.setId(location.getState().getId());
+        state.setValue(location.getState().getValue());
+
+        city.setId(location.getCity().getId());
+        city.setValue(location.getCity().getValue());
+
+        street.setId(location.getStreet().getId());
+        street.setValue(location.getStreet().getValue());
+
+        locationXML.setState(state);
+        locationXML.setCity(city);
+        locationXML.setStreet(street);
+
+        locationXML.setId(id);
+
+        return locationXML;
+    }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://rentacar.com/request"
+           targetNamespace="http://rentacar.com/request" elementFormDefault="qualified"
+           xmlns:bundle="http://rentacar.com/bundle">
+
+    <xs:import namespace="http://rentacar.com/bundle" schemaLocation="bundle.xsd"/>
+
+    <xs:element name="request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="totalCost" type="xs:float"/>
+                <xs:element name="startDate" type="xs:dateTime"/>
+                <xs:element name="endDate" type="xs:dateTime"/>
+                <xs:element name="status">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="PENDING"/>
+                            <xs:enumeration value="RESERVED"/>
+                            <xs:enumeration value="CANCELED"/>
+                            <xs:enumeration value="PAID"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="userId" type="xs:long"/>
+                <xs:element name="vehicleId" type="xs:long"/>
+                <xs:element name="ownerId" type="xs:long"/>
+                <xs:element ref="bundle:bundle"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getRequestById">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="request_id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="request" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="request"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

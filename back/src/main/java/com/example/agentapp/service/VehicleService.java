@@ -2,6 +2,7 @@ package com.example.agentapp.service;
 
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.Vehicle;
+import com.example.agentapp.model.VehicleImage;
 import com.example.agentapp.repository.VehicleImageRepository;
 import com.example.agentapp.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,9 @@ public class VehicleService {
             }
 
             // povezi sliku
+            System.out.println(vehicle.getImage());
+            VehicleImage img = imageRepository.save(vehicle.getImage());
+            System.out.println(vehicle);
             vehicle.setImage(imageRepository.findByName(vehicle.getImage().getName()).get());
 
             Vehicle v = vehicleRepository.save(vehicle);

@@ -42,4 +42,11 @@ public class VehicleStyle {
                 ", value='" + value + '\'' +
                 '}';
     }
+
+    public com.example.agentapp.xmlmodel.catalogue.vehicle_style.VehicleStyle toXML(VehicleStyle vehicleStyle){
+        com.example.agentapp.xmlmodel.catalogue.vehicle_style.VehicleStyle vehicleStyleXML = new com.example.agentapp.xmlmodel.catalogue.vehicle_style.VehicleStyle();
+        vehicleStyleXML.setId(vehicleStyle.getId());
+        vehicleStyleXML.setValue(vehicleStyle.getValue());
+        return vehicleStyleXML;
+    }
 }

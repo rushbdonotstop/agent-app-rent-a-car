@@ -1,24 +1,16 @@
 package com.example.agentapp.controller;
 
 import com.example.agentapp.dto.*;
-import com.example.agentapp.model.VehicleMake;
-import com.example.agentapp.model.VehicleModel;
-import com.example.agentapp.model.Location;
-import com.example.agentapp.model.Pricelist;
+import com.example.agentapp.model.*;
 import com.example.agentapp.dto.RequestForVehicleDTO;
 import com.example.agentapp.dto.UserDTO;
-import com.example.agentapp.model.User;
-import com.example.agentapp.model.Vehicle;
 import com.example.agentapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -133,7 +125,7 @@ public class SearchVehicleController {
 
     public ResponseEntity<List<Location>> getLocations() throws Exception {
         System.out.println("Getting all locations");
-        List<com.example.agentapp.model.Location> locations = locationService.getAll();
+        List<Location> locations = locationService.getAll();
         return new ResponseEntity(locations, HttpStatus.OK);
     }
 
