@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://rentacar.com/bundle"
+           targetNamespace="http://rentacar.com/bundle" elementFormDefault="qualified"  xmlns:request="http://rentacar.com/request">
+
+    <xs:import namespace="http://rentacar.com/request" schemaLocation="request.xsd"/>
+
+    <xs:element name="bundle">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="requests">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="request:request" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getBundleById">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bundle_id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllBundle">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bundle" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getBundle">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="bundle"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

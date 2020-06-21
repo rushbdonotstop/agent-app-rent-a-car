@@ -4,7 +4,6 @@ import com.example.agentapp.model.City;
 import com.example.agentapp.model.Location;
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.service.LocationService;
-import com.example.agentapp.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,9 +19,6 @@ public class LocationController {
 
     @Autowired
     private LocationService locationService;
-
-    @Autowired
-    private StateService stateService;
 
 
     /**
@@ -84,6 +80,7 @@ public class LocationController {
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Location> create(@RequestBody Location location) throws Exception {
         Location locationNew = locationService.create(location);
+
         return new ResponseEntity<Location>(locationNew, HttpStatus.OK);
     }
 }

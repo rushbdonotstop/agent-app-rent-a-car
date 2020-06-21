@@ -3,8 +3,12 @@ package com.example.agentapp.controller;
 import com.example.agentapp.dto.MinAndMaxPricesDTO;
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.Pricelist;
+import com.example.agentapp.model.Vehicle;
+import com.example.agentapp.model.VehicleStyle;
 import com.example.agentapp.service.PricelistService;
 import com.example.agentapp.service.VehicleService;
+import com.example.agentapp.soapconfig.client.vehicle.VehicleClient;
+import com.example.agentapp.xmlmodel.vehicle.GetVehicleById;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -28,6 +33,8 @@ public class PricelistController {
     @Autowired
     private VehicleService vehicleService;
 
+    @Autowired
+    private VehicleClient vehicleClient;
 
     /**
      * GET /server/pricelist
@@ -52,35 +59,27 @@ public class PricelistController {
     }
 
     /**
-     * PUT /server/pricelist
+     * PUT /server/pricelist/
      *
-     * @return status of updating pricelist
+     * @return status of saving updated list of pricelists
      */
     @PutMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Notification> update(@RequestBody List<Pricelist> pricelists, @RequestParam(value="startDate", required = true)
-            LocalDate startDate, @RequestParam(value="endDate", required = true) LocalDate endDate) throws Exception {
-
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate, @RequestParam(value="endDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) throws Exception {
         Boolean exists = vehicleService.exists(pricelists.get(0).getVehicleId());
         Notification notification = new Notification("Vehicle id does not exist.");
         if (exists){
-            notification = priceListService.updatePricelists(pricelists, startDate, endDate);
+            notification = priceListService.savePricelists(pricelists, startDate, endDate);
         }
-        return new ResponseEntity<Notification>(notification, HttpStatus.OK);
-    }
 
-    /**
-     * POST /server/pricelist
-     *
-     * @return status of creating pricelist
-     */
-    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> create(@RequestBody List<Pricelist> pricelists, @RequestParam(value="startDate", required = true)
-            LocalDate startDate, @RequestParam(value="endDate", required = true) LocalDate endDate) throws Exception {
-        Boolean exists = vehicleService.exists(pricelists.get(0).getVehicleId());
-        Notification notification = new Notification("Vehicle id does not exist.");
-        if (exists){
-            notification = priceListService.createPricelists(pricelists, startDate, endDate);
-        }
+        Vehicle vehicle = vehicleService.get(pricelists.get(0).getVehicleId());
+
+        System.out.println(vehicleClient);
+
+        GetVehicleById response = vehicleClient.createEverythingVehicle(vehicle.toXML(vehicle));
+
+        System.err.println(response.getVehicleId());
+
         return new ResponseEntity<Notification>(notification, HttpStatus.OK);
     }
 
@@ -102,8 +101,7 @@ public class PricelistController {
 
     @PostMapping(value = "/validatePricelists", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Pricelist>> validatePricelists(@RequestBody List<Pricelist> pricelists, @RequestParam(value="startDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-            LocalDate startDate, @RequestParam(value="endDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate endDate){
-        return new ResponseEntity<List<Pricelist>>(priceListService.validatePricelists(pricelists, startDate, endDate), HttpStatus.OK);
+            LocalDateTime startDate, @RequestParam(value="endDate", required = true) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate){
+        return new ResponseEntity<List<Pricelist>>(priceListService.validatePricelistsDate(pricelists, startDate, endDate), HttpStatus.OK);
     }
-
 }

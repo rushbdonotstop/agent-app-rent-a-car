@@ -24,9 +24,9 @@ public class UserDetailsService {
         return userDetailsRepository.findAll();
     }
 
-    public UserDetailsDTO getOneUserDetails(String id) throws Exception {
+    public UserDetailsDTO getOneUserDetails(Long id) throws Exception {
         try {
-            UserDetails userDetails = userDetailsRepository.getOne(Long.parseLong(id));
+            UserDetails userDetails = userDetailsRepository.getOne(id);
 
             UserDetailsDTO userDetailsDTO = new UserDetailsDTO(userDetails.getId(), userDetails.getFullName(), userDetails.getAddress()
                     , userDetails.getBusinessNum(), userDetails.getVehicleNum(), userDetails.getUserType().toString());
@@ -37,9 +37,9 @@ public class UserDetailsService {
         }
     }
 
-    public void addNewUserDetails(String id, UserDetailsDTO userDetailsDTO) throws Exception, EntityNotFoundException{
+    public void addNewUserDetails(Long id, UserDetailsDTO userDetailsDTO) throws Exception, EntityNotFoundException{
         try {
-            User user = userRepository.findOneById(Long.parseLong(id));
+            User user = userRepository.findOneById(id);
             if(user.getUserDetails() != null) {
                 throw new Exception("User already has user details. Try sending put request if you want to change details");
             }
@@ -59,10 +59,10 @@ public class UserDetailsService {
         }
     }
 
-    public void changeUserDetails(String id, UserDetailsDTO userDetailsDTO) throws EntityNotFoundException {
+    public void changeUserDetails(Long id, UserDetailsDTO userDetailsDTO) throws EntityNotFoundException {
         User user;
         try {
-            user = userRepository.findOneById(Long.parseLong(id));
+            user = userRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("User not found");
         }
@@ -82,10 +82,10 @@ public class UserDetailsService {
         userDetailsRepository.save(userDetails);
     }
 
-    public void deleteUserDetails(String id, UserDetailsDTO userDetailsDTO) throws Exception, EntityNotFoundException{
+    public void deleteUserDetails(Long id, UserDetailsDTO userDetailsDTO) throws Exception, EntityNotFoundException{
         User user;
         try {
-            user = userRepository.findOneById(Long.parseLong(id));
+            user = userRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("User not found");
         }

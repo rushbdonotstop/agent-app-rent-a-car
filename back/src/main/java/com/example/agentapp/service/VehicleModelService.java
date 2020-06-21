@@ -39,17 +39,17 @@ public class VehicleModelService {
         return false;
     }
 
-    public VehicleModel findOneModel(String id) throws Exception{
+    public VehicleModel findOneModel(Long id) throws Exception{
         VehicleModel vehicleModel = null;
         try {
-            vehicleModel = vehicleModelRepository.findOneById(Long.parseLong(id));
+            vehicleModel = vehicleModelRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new Exception("Can't find vehicle model with id = " + id);
         }
         return vehicleModel;
     }
 
-    public void deleteOneModel(String id) throws Exception {
+    public void deleteOneModel(Long id) throws Exception {
         try {
             findOneModel(id);
         } catch (EntityNotFoundException e) {
@@ -58,7 +58,7 @@ public class VehicleModelService {
         vehicleModelRepository.delete(findOneModel(id));
     }
 
-    public void changeModel(String id, VehicleModel vehicleModel1) throws Exception{
+    public void changeModel(Long id, VehicleModel vehicleModel1) throws Exception{
         try {
             VehicleModel vehicleModel = findOneModel(id);
             vehicleModel.setValue(vehicleModel1.getValue());

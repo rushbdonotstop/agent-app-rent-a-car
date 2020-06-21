@@ -1,8 +1,8 @@
 package com.example.agentapp.controller;
 
 import com.example.agentapp.model.Notification;
-import com.example.agentapp.model.State;
 import com.example.agentapp.service.StateService;
+import com.example.agentapp.model.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

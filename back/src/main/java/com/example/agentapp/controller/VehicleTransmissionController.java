@@ -32,7 +32,7 @@ public class VehicleTransmissionController {
      * @return return a vehicle transmission
      */
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<VehicleTransmission> getOneVehicleTransmission(@PathVariable String id) {
+    public ResponseEntity<VehicleTransmission> getOneVehicleTransmission(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(vehicleTransmissionService.findOne(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -46,7 +46,7 @@ public class VehicleTransmissionController {
      * @return return a notification
      */
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> deleteVehicleTransmission(@PathVariable String id) {
+    public ResponseEntity<Notification> deleteVehicleTransmission(@PathVariable Long id) {
         try {
             vehicleTransmissionService.deleteOne(id);
             return new ResponseEntity<>(new Notification("Successfully deleted vehicle transmission id = " + id, true), HttpStatus.OK);
@@ -61,7 +61,7 @@ public class VehicleTransmissionController {
      * @return return status of creating a vehicle model request
      */
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> putVehicleTransmission(@PathVariable String id, @RequestBody VehicleTransmission vehicleTransmission) {
+    public ResponseEntity<Notification> putVehicleTransmission(@PathVariable Long id, @RequestBody VehicleTransmission vehicleTransmission) {
         try {
             vehicleTransmissionService.change(id, vehicleTransmission);
 

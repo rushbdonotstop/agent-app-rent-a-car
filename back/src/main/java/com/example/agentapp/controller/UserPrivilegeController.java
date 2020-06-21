@@ -37,7 +37,7 @@ public class UserPrivilegeController {
      * @return returns one user privileges
      */
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserPrivilegeDTO> getOneUserPrivileges(@PathVariable String id) {
+    public ResponseEntity<UserPrivilegeDTO> getOneUserPrivileges(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(userPrivilegeService.getOneUserPrivileges(id), HttpStatus.OK);
         }catch (EntityNotFoundException e) {
@@ -54,7 +54,7 @@ public class UserPrivilegeController {
      * @return returns notification
      */
     @PostMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> addUserPrivilege(@RequestBody UserPrivilegeRequestDTO userPrivilegeRequestDTO, @PathVariable String id) {
+    public ResponseEntity<Notification> addUserPrivilege(@RequestBody UserPrivilegeRequestDTO userPrivilegeRequestDTO, @PathVariable Long id) {
         try {
             userPrivilegeService.addPrivilege(id, userPrivilegeRequestDTO);
             return new ResponseEntity<>(new Notification("User privilege added.", true), HttpStatus.OK);
@@ -74,7 +74,7 @@ public class UserPrivilegeController {
      * @return returns notification
      */
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> deleteUserPrivilege(@RequestBody UserPrivilegeRequestDTO userPrivilegeRequestDTO, @PathVariable String id) {
+    public ResponseEntity<Notification> deleteUserPrivilege(@RequestBody UserPrivilegeRequestDTO userPrivilegeRequestDTO, @PathVariable Long id) {
         try {
             userPrivilegeService.deleteUserPrivilege(id, userPrivilegeRequestDTO);
             return new ResponseEntity<>(new Notification("User privilege deleted.", true), HttpStatus.OK);
