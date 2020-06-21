@@ -42,4 +42,11 @@ public class VehicleFuelType {
                 ", value='" + value + '\'' +
                 '}';
     }
+
+    public com.example.agentapp.xmlmodel.catalogue.vehicle_fuel_type.VehicleFuelType toXML(VehicleFuelType vehicleFuelType){
+        com.example.agentapp.xmlmodel.catalogue.vehicle_fuel_type.VehicleFuelType vehicleFuelTypeXML = new com.example.agentapp.xmlmodel.catalogue.vehicle_fuel_type.VehicleFuelType();
+        vehicleFuelTypeXML.setId(vehicleFuelType.getId());
+        vehicleFuelTypeXML.setValue(vehicleFuelType.getValue());
+        return vehicleFuelTypeXML;
+    }
 }

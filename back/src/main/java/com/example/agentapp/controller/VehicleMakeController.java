@@ -23,7 +23,7 @@ public class VehicleMakeController {
      * @return return a vehicle make
      */
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<VehicleMake> getOneVehicleMake(@PathVariable String id) {
+    public ResponseEntity<VehicleMake> getOneVehicleMake(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(vehicleMakeService.findOneMake(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class VehicleMakeController {
      * @return return notification
      */
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> deleteVehicleMake(@PathVariable String id) {
+    public ResponseEntity<Notification> deleteVehicleMake(@PathVariable Long id) {
         try {
             vehicleMakeService.deleteOneMake(id);
             return new ResponseEntity<>(new Notification("Successfully deleted vehicle make id = " + id, true), HttpStatus.OK);
@@ -52,7 +52,7 @@ public class VehicleMakeController {
      * @return return status of creating vehicle request
      */
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> putVehicleMake(@PathVariable String id, @RequestBody VehicleMake vehicleMake) {
+    public ResponseEntity<Notification> putVehicleMake(@PathVariable Long id, @RequestBody VehicleMake vehicleMake) {
         try {
             vehicleMakeService.changeMake(id, vehicleMake);
 

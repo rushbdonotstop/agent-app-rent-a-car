@@ -23,7 +23,7 @@ public class VehicleFuelTypeController {
      * @return return a vehicle fuel types
      */
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<VehicleFuelType> getOneVehicleFuelType(@PathVariable String id) {
+    public ResponseEntity<VehicleFuelType> getOneVehicleFuelType(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(vehicleFuelTypeService.findOneFuelType(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class VehicleFuelTypeController {
      * @return return notification
      */
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> deleteVehicleFuelType(@PathVariable String id) {
+    public ResponseEntity<Notification> deleteVehicleFuelType(@PathVariable Long id) {
         try {
             vehicleFuelTypeService.deleteOneFuelType(id);
             return new ResponseEntity<>(new Notification("Successfully deleted fuel type id = " + id, true), HttpStatus.OK);
@@ -52,7 +52,7 @@ public class VehicleFuelTypeController {
      * @return return status of creating vehicle request
      */
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> putVehicleFuelType(@PathVariable String id, @RequestBody VehicleFuelType vehicleFuelType) {
+    public ResponseEntity<Notification> putVehicleFuelType(@PathVariable Long id, @RequestBody VehicleFuelType vehicleFuelType) {
         try {
             vehicleFuelTypeService.changeFuelType(id, vehicleFuelType);
 

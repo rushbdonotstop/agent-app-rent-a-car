@@ -83,9 +83,9 @@ public class UserService {
         return userDTOList;
     }
 
-    public UserDTO getOneUser(String id) throws Exception {
+    public UserDTO getOneUser(Long id) throws Exception {
         try {
-            User user = userRepository.findOneById(Long.parseLong(id));
+            User user = userRepository.findOneById(id);
             UserDTO userDTO = new UserDTO(user.getId(), user.getUsername());
             return userDTO;
         } catch (ExceptionInInitializerError e) {
@@ -118,9 +118,9 @@ public class UserService {
         }
     }
 
-    public void deleteUser(String id) throws Exception {
+    public void deleteUser(Long id) throws Exception {
         try {
-            User user = userRepository.findOneById(Long.parseLong(id));
+            User user = userRepository.findOneById(id);
 
             userRepository.delete(user);
         } catch (EntityNotFoundException e) {

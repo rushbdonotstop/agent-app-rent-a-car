@@ -10,11 +10,8 @@ import java.util.List;
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
-    List<Vehicle> findAll();
 
     Vehicle findOneById(Long Id);
-
-    Vehicle save(Vehicle vehicle);
 
     void removeById(Long Id);
 

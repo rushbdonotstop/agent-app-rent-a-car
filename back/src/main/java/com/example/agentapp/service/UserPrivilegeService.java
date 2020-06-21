@@ -50,17 +50,17 @@ public class UserPrivilegeService {
         return userPrivilegeDTOList;
     }
 
-    public UserPrivilegeDTO getOneUserPrivileges(String id) throws EntityNotFoundException {
+    public UserPrivilegeDTO getOneUserPrivileges(Long id) throws EntityNotFoundException {
         try {
-            userRepository.findOneById(Long.parseLong(id));
+            userRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("User doesn't exists.");
         }
 
-        List<UserPrivilege> userPrivilegeList = userPrivilegeRepository.findAllByUserId(Long.parseLong(id));
+        List<UserPrivilege> userPrivilegeList = userPrivilegeRepository.findAllByUserId(id);
 
         UserPrivilegeDTO userPrivilegeDTO = new UserPrivilegeDTO();
-        userPrivilegeDTO.setUserId(Long.parseLong(id));
+        userPrivilegeDTO.setUserId(id);
         userPrivilegeList.stream().forEach(userPrivilege -> {
             userPrivilegeDTO.addPrivilege(userPrivilege.getPrivilege().toString());
         });
@@ -68,10 +68,10 @@ public class UserPrivilegeService {
         return userPrivilegeDTO;
     }
 
-    public void addPrivilege(String id, UserPrivilegeRequestDTO userPrivilegeRequestDTO) throws EntityNotFoundException, Exception {
+    public void addPrivilege(Long id, UserPrivilegeRequestDTO userPrivilegeRequestDTO) throws EntityNotFoundException, Exception {
         User user;
         try {
-            user = userRepository.findOneById(Long.parseLong(id));
+            user = userRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("User doesn't exists.");
         }
@@ -87,10 +87,10 @@ public class UserPrivilegeService {
         }
     }
 
-    public void deleteUserPrivilege(String id, UserPrivilegeRequestDTO userPrivilegeRequestDTO) throws Exception {
+    public void deleteUserPrivilege(Long id, UserPrivilegeRequestDTO userPrivilegeRequestDTO) throws Exception {
         User user;
         try {
-            user = userRepository.findOneById(Long.parseLong(id));
+            user = userRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("User doesn't exists.");
         }
@@ -99,7 +99,7 @@ public class UserPrivilegeService {
         if (!userPrivilegeDTO.getUserPrivileges().contains(userPrivilegeRequestDTO.getUserPrivilege())) {
             throw new Exception("User doesn't have " + userPrivilegeRequestDTO.getUserPrivilege() + " privilege.");
         } else {
-            UserPrivilege userPrivilege = userPrivilegeRepository.findOneByUserIdAndPrivilege(Long.parseLong(id), Privilege.toEnum(userPrivilegeRequestDTO.getUserPrivilege()));
+            UserPrivilege userPrivilege = userPrivilegeRepository.findOneByUserIdAndPrivilege(id, Privilege.toEnum(userPrivilegeRequestDTO.getUserPrivilege()));
             userPrivilegeRepository.delete(userPrivilege);
         }
     }

@@ -37,17 +37,17 @@ public class VehicleTransmissionService {
         return false;
     }
 
-    public VehicleTransmission findOne(String id) throws Exception{
+    public VehicleTransmission findOne(Long id) throws Exception{
         VehicleTransmission vehicleTransmission = null;
         try {
-            vehicleTransmission = vehicleTransmissionRepository.findOneById(Long.parseLong(id));
+            vehicleTransmission = vehicleTransmissionRepository.findOneById(id);
         } catch (EntityNotFoundException e) {
             throw new Exception("Can't find vehicle transmission with id = " + id);
         }
         return vehicleTransmission;
     }
 
-    public void deleteOne(String id) throws Exception {
+    public void deleteOne(Long id) throws Exception {
         try {
             findOne(id);
         } catch (EntityNotFoundException e) {
@@ -56,7 +56,7 @@ public class VehicleTransmissionService {
         vehicleTransmissionRepository.delete(findOne(id));
     }
 
-    public void change(String id, VehicleTransmission vehicleTransmission1) throws Exception{
+    public void change(Long id, VehicleTransmission vehicleTransmission1) throws Exception{
         try {
             VehicleTransmission vehicleTransmission = findOne(id);
             vehicleTransmission.setValue(vehicleTransmission1.getValue());

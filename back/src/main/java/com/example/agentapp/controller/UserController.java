@@ -87,7 +87,7 @@ public class UserController {
      * @return returns object of type UserDTO with user id and username
      */
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDTO> getOneUser(@RequestParam(value = "id", required = true) String id) throws Exception {
+    public ResponseEntity<UserDTO> getOneUser(@RequestParam(value = "id", required = true) Long id) throws Exception {
         try {
             return new ResponseEntity<UserDTO>(userService.getOneUser(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -131,7 +131,7 @@ public class UserController {
      * @return returns notification
      */
     @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> putUser(@RequestParam(value = "id", required = true) String id) throws Exception {
+    public ResponseEntity<Notification> putUser(@RequestParam(value = "id", required = true) Long id) throws Exception {
         try {
             userService.deleteUser(id);
             return new ResponseEntity<Notification>(new Notification("User with id " + id + " deleted.", true), HttpStatus.OK);
