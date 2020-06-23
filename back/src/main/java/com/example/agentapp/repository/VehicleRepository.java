@@ -11,7 +11,11 @@ import java.util.List;
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
 
+    List<Vehicle> findAll();
+
     Vehicle findOneById(Long Id);
+
+    Vehicle save(Vehicle vehicle);
 
     void removeById(Long Id);
 
@@ -32,5 +36,8 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     List<Vehicle> findByStyleId(Long Id);
 
     List<Vehicle> findByTransmissionId(Long Id);
+
+    List<Vehicle> findAllByUserId(Long id);
+
 
 }

@@ -1,6 +1,6 @@
 package com.example.agentapp;
 
-import com.example.agentapp.model.Message;
+import com.example.agentapp.model.MessageForQueue;
 import com.example.agentapp.service.CoordinateService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -24,10 +24,10 @@ public class Receiver {
     public void receiveMessage(byte[] messageByte) throws UnsupportedEncodingException, JsonProcessingException {
             String messageStringJSON = new String(messageByte, "UTF-8");
             ObjectMapper mapper = new ObjectMapper();
-            Message message = mapper.readValue(messageStringJSON, new TypeReference<Message>() {
+            MessageForQueue messageForQueue = mapper.readValue(messageStringJSON, new TypeReference<MessageForQueue>() {
             });
-            if(message.getHeaders().getAuthorization()!=null)
-                System.out.println("Received <" + message.getBody() + ">");
+            if(messageForQueue.getHeaders().getAuthorization()!=null)
+                System.out.println("Received <" + messageForQueue.getBody() + ">");
 
         latch.countDown();
     }

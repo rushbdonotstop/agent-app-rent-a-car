@@ -6,6 +6,7 @@ import com.example.agentapp.model.enums.UserType;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserDetails {
@@ -28,6 +29,10 @@ public class UserDetails {
 
     @Column(name = "user_type", nullable = true)
     private UserType userType;
+
+    @OneToMany()
+    @JoinColumn(name = "userdetail_id") //so the new table doesnt get created
+    private Set<Penalty> penalties;
 
     private transient List<Privilege> privilegeList;
 
@@ -99,14 +104,24 @@ public class UserDetails {
         this.privilegeList = privilegeList;
     }
 
+    public Set<Penalty> getPenalties() {
+        return penalties;
+    }
+
+    public void setPenalties(Set<Penalty> penalties) {
+        this.penalties = penalties;
+    }
+
     @Override
     public String toString() {
         return "UserDetails{" +
-                "fullName='" + fullName + '\'' +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
                 ", address='" + address + '\'' +
                 ", businessNum='" + businessNum + '\'' +
-                ", vehicleNum='" + vehicleNum + '\'' +
+                ", vehicleNum=" + vehicleNum +
                 ", userType=" + userType +
+                ", penalties=" + penalties +
                 ", privilegeList=" + privilegeList +
                 '}';
     }

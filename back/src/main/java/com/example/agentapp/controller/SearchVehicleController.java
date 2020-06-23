@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,6 +41,9 @@ public class SearchVehicleController {
     @Autowired
     private RequestService requestService;
 
+    @Autowired
+    ReviewService reviewService;
+
     @GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<VehicleMainViewDTO>> parameterizedSearch(@RequestParam(value = "vehicleMake") Long vehicleMake, @RequestParam(value = "vehicleModel") Long vehicleModel, @RequestParam(value = "vehicleStyle") Long vehicleStyle, @RequestParam(value = "vehicleFuel") Long vehicleFuel, @RequestParam(value = "vehicleTransmission") Long vehicleTransmission, @RequestParam(value = "priceLowerLimit") float priceLowerLimit, @RequestParam(value = "priceUpperLimit") float priceUpperLimit, @RequestParam(value = "maxMileage") int maxMileage, @RequestParam(value = "mileageLimit") int mileageLimit, @RequestParam(value = "collisionProtection") Boolean collisionProtection, @RequestParam(value = "childrenSeats") int childrenSeats, @RequestParam(value = "state") String state, @RequestParam(value = "city") String city, @RequestParam(value = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate, @RequestParam(value = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) throws Exception {
         List<Vehicle> vehicleList = searchVehicleService.findAll();
@@ -56,7 +60,9 @@ public class SearchVehicleController {
 
         List<RequestForVehicleDTO> requestsList = (this.getRequests()).getBody();
 
-        List<VehicleMainViewDTO> dtoList = searchVehicleService.parameterizedSearch(vehicleList, requestsList, locations, vehicleMakeList, pricelist, vehicleModelsList, usersList, vehicleMake, vehicleModel, vehicleStyle, vehicleFuel, vehicleTransmission, maxMileage, mileageLimit, collisionProtection, childrenSeats, state, city, priceLowerLimit, priceUpperLimit, startDate, endDate);
+        List<Review> reviewList = (this.getReviews()).getBody();
+
+        List<VehicleMainViewDTO> dtoList = searchVehicleService.parameterizedSearch(vehicleList, requestsList, locations, vehicleMakeList, pricelist, vehicleModelsList, usersList, reviewList, vehicleMake, vehicleModel, vehicleStyle, vehicleFuel, vehicleTransmission, maxMileage, mileageLimit, collisionProtection, childrenSeats, state, city, priceLowerLimit, priceUpperLimit, startDate, endDate);
 
         System.out.println("DOBRA METODA ALAL TI VERA");
 
@@ -75,7 +81,9 @@ public class SearchVehicleController {
 
         List<UserDTO> usersList = (this.getUsernames()).getBody();
 
-        List<VehicleMainViewDTO> vehicleDTOList = searchVehicleService.getAllVehicleMainViewDTO(vehicleList, vehicleMakeList, pricelist, vehicleModelsList, usersList);
+        List<Review> reviewList = (this.getReviews()).getBody();
+
+        List<VehicleMainViewDTO> vehicleDTOList = searchVehicleService.getAllVehicleMainViewDTO(vehicleList, vehicleMakeList, pricelist, vehicleModelsList, usersList, reviewList);
         return new ResponseEntity<>(vehicleDTOList, HttpStatus.OK);
     }
 
@@ -87,6 +95,61 @@ public class SearchVehicleController {
 
         return new ResponseEntity<VehicleDetailsDTO>(dto, HttpStatus.OK);
 
+    }
+
+    @GetMapping(value = "make/{makeId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Long>> getVehiclesByMake(@PathVariable Long makeId) {
+        List<Vehicle> vehiclesList = searchVehicleService.findByVehicleMake(makeId);
+        List<Long> idList = new ArrayList<>();
+        for (Vehicle vehicle:
+                vehiclesList) {
+            idList.add(vehicle.getId());
+        }
+        return new ResponseEntity<>(idList, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "model/{modelId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Long>> getVehiclesByModel(@PathVariable Long modelId) {
+        List<Vehicle> vehiclesList = searchVehicleService.findByVehicleModel(modelId);
+        List<Long> idList = new ArrayList<>();
+        for (Vehicle vehicle:
+                vehiclesList) {
+            idList.add(vehicle.getId());
+        }
+        return new ResponseEntity<>(idList, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "fuelType/{fuelId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Long>> getVehiclesByFuelType(@PathVariable Long fuelId) {
+        List<Vehicle> vehiclesList = searchVehicleService.findByVehicleFuelType(fuelId);
+        List<Long> idList = new ArrayList<Long>();
+        for (Vehicle vehicle:
+                vehiclesList) {
+            idList.add(vehicle.getId());
+        }
+        return new ResponseEntity<>(idList, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "vehicleStyle/{styleId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Long>> getVehicleByStyle(@PathVariable Long styleId) {
+        List<Vehicle> vehiclesList = searchVehicleService.findByVehicleStyle(styleId);
+        List<Long> idList = new ArrayList<Long>();
+        for (Vehicle vehicle:
+                vehiclesList) {
+            idList.add(vehicle.getId());
+        }
+        return new ResponseEntity<>(idList, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "transmissionType/{transmissionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Long>> getVehicleByTransmissionType(@PathVariable Long transmissionId) {
+        List<Vehicle> vehiclesList = searchVehicleService.findByVehicleTransmission(transmissionId);
+        List<Long> idList = new ArrayList<Long>();
+        for (Vehicle vehicle:
+                vehiclesList) {
+            idList.add(vehicle.getId());
+        }
+        return new ResponseEntity<>(idList, HttpStatus.OK);
     }
 
     public ResponseEntity<List<Pricelist>> getPricelists() throws Exception {
@@ -132,5 +195,10 @@ public class SearchVehicleController {
     public ResponseEntity<List<RequestForVehicleDTO>> getRequests() throws Exception {
         System.out.println("Getting all requests");
         return new ResponseEntity(this.requestService.findAll(), HttpStatus.OK);
+    }
+
+    public ResponseEntity<List<Review>> getReviews() throws Exception {
+        System.out.println("Getting all requests");
+        return new ResponseEntity(this.reviewService.getAll(), HttpStatus.OK);
     }
 }

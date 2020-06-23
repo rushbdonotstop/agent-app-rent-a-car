@@ -117,6 +117,10 @@ public class PricelistService {
 
     public MinAndMaxPricesDTO getMinAndMax() {
         List<Pricelist> list = pricelistRepository.findAll();
+        if (list.size() == 0) {
+            MinAndMaxPricesDTO minAndMax = new MinAndMaxPricesDTO(0, 0);
+            return minAndMax;
+        }
         float min = list.get(0).getPrice();
         float max = list.get(0).getPrice();
         for (Pricelist pricelist : list) {
@@ -158,6 +162,10 @@ public class PricelistService {
                 if(dateRangeOutdated(pricelists.get(0)) || dateRangeInvalid(pricelists.get(0))
                         || (!pricelists.get(0).getStartDate().equals(startDate) && !pricelists.get(0).getEndDate().equals(endDate))
                         || carDays != pricelistDays){
+                    System.err.println("Pricelist size == 1 == null");
+                    System.err.println(pricelists.get(0).getStartDate());
+                    System.err.println(pricelists.get(0).getEndDate());
+                    System.err.println(carDays + " ==? " + pricelistDays);
                     return null;
                 }
                 return pricelists;
