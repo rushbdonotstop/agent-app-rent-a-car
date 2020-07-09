@@ -3,6 +3,7 @@ package com.example.agentapp.repository;
 import com.example.agentapp.model.Report;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,8 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
     List<Report> findByVehicleId(Long vehicleId);
 
     Optional<Report> findById(Long id);
+
+    List<Report> findByVehicleIdAndStartDateAndEndDate(Long vehicleId, LocalDateTime startDate, LocalDateTime endDate);
 
 }
 

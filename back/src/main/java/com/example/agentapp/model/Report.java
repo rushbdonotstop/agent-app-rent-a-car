@@ -1,6 +1,7 @@
 package com.example.agentapp.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Report {
@@ -20,6 +21,12 @@ public class Report {
 
     @Column
     private Long userId; //nullable when renting was done manualy, in the store
+
+    @Column(nullable = false)
+    private LocalDateTime startDate;
+
+    @Column(nullable = false)
+    private LocalDateTime endDate;
 
     public Report() {
     }
@@ -69,5 +76,21 @@ public class Report {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 }

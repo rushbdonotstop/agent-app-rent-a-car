@@ -4,6 +4,7 @@ import { VehicleMainViewDTO } from 'src/app/shared/models/vehicle/VehicleMainVie
 import { Vehicle } from 'src/app/shared/models/vehicle/Vehicle';
 import { SearchParams } from 'src/app/shared/models/SearchParams';
 import { Image } from 'src/app/shared/models/vehicle/Image';
+import { Statistics } from 'src/app/shared/models/statistic/Statistics';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
@@ -15,15 +16,15 @@ export class VehicleService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<VehicleMainViewDTO[]>('server/search',  httpOptions);
+    return this.http.get<VehicleMainViewDTO[]>('server/vehicle/search',  httpOptions);
   }
 
   getVehicle(vehicleId : number) {
-    return this.http.get<Vehicle>('server/vehicle/'+vehicleId,  httpOptions);
+    return this.http.get<Vehicle>('server/vehicle/vehicle/'+vehicleId,  httpOptions);
   }
 
   getImage(imageName : string){
-    return this.http.get<Image>('server/vehicle/image/' + imageName,  httpOptions);
+    return this.http.get<Image>('server/vehicle/vehicle/image/' + imageName,  httpOptions);
   }
 
   uploadPicture(uploadImageData : any) {
@@ -32,11 +33,11 @@ export class VehicleService {
     const options = {
       params : params
     }
-    return this.http.post<any>('server/vehicle/image/upload',  options);
+    return this.http.post<any>('server/vehicle/vehicle/image/upload',  options);
   }
 
   create(vehicle : Vehicle) {
-    return this.http.post<any>('server/vehicle/', vehicle,  httpOptions);
+    return this.http.post<any>('server/vehicle/vehicle/', vehicle,  httpOptions);
   }
 
   search(searchParams : SearchParams) {
@@ -75,6 +76,10 @@ export class VehicleService {
     }
 
     return this.http.get<VehicleMainViewDTO[]>('server/vehicle/search/search',  options);
+  }
+
+  getStatistics(userId : number) {
+    return this.http.get<Statistics>('server/vehicle/statistics/'+userId, httpOptions);
   }
 
 }

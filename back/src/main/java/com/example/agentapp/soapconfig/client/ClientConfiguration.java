@@ -1,5 +1,6 @@
 package com.example.agentapp.soapconfig.client;
 
+import com.example.agentapp.soapconfig.client.user.UserClient;
 import com.example.agentapp.soapconfig.client.vehicle.VehicleClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,5 +25,15 @@ public class ClientConfiguration {
         client.setUnmarshaller(marshaller);
         return client;
     }
+
+    @Bean
+    public UserClient userClient(Jaxb2Marshaller marshaller) {
+        UserClient client = new UserClient();
+        client.setDefaultUri("http://localhost:8081/user/ws");
+        client.setMarshaller(marshaller);
+        client.setUnmarshaller(marshaller);
+        return client;
+    }
+
 
 }

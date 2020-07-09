@@ -1,10 +1,13 @@
 package com.example.agentapp.service;
 
 import com.example.agentapp.dto.MessageDTO;
+import com.example.agentapp.dto.NewMessageDTO;
 import com.example.agentapp.dto.RequestDTO;
+import com.example.agentapp.dto.UserDTO;
 import com.example.agentapp.model.Conversation;
 import com.example.agentapp.model.Message;
 import com.example.agentapp.model.Request;
+import com.example.agentapp.model.User;
 import com.example.agentapp.model.enums.MessageType;
 import com.example.agentapp.model.enums.Status;
 import com.example.agentapp.repository.ConversationRepository;
@@ -93,5 +96,22 @@ public class MessageService {
 
         Collections.sort(listToSend, Collections.reverseOrder());
         return listToSend;
+    }
+
+    public MessageDTO convertMessage(NewMessageDTO message, List<User> userList) {
+        MessageDTO convertedMessage = new MessageDTO();
+
+        for (User user : userList) {
+            if (user.getUsername().equals(message.getReceiverUsername())) {
+                convertedMessage.setReceiverId(user.getId());
+                break;
+            }
+        }
+        convertedMessage.setSenderId(message.getSenderId());
+        convertedMessage.setMessageType(message.getMessageType());
+        convertedMessage.setDateAndTime(message.getDateAndTime());
+        convertedMessage.setText(message.getText());
+
+        return convertedMessage;
     }
 }

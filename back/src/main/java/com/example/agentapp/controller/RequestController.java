@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -225,9 +226,17 @@ public class RequestController {
     @GetMapping(value = "/rentingFinished", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Request>> rentingFinishedRequests() {
         try {
-            return new ResponseEntity<>(this.requestService.rentingFinishedReports(), HttpStatus.OK);
+            return new ResponseEntity<>(this.requestService.rentingFinishedRequests(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @Scheduled(initialDelayString = "${request.initialdelay}", fixedRateString = "${request.fixedrate}")
+    public void fixedRateJobWithInitialDelay() throws InterruptedException {
+
+        System.out.println("Prošlo 5 minuta, vidi zahteve!");
+        requestService.startScheduledTask();
+
     }
 }
