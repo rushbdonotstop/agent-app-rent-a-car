@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,21 +21,21 @@ import java.util.Map;
 public class CoordinateController {
 
     @Autowired
-    CoordinateService service;
-
-    @Autowired
     CoordinateService secretService;
+
+    @MessageMapping("/send/message")
+    public void onRecievedMessage(String message){
+        System.out.println("recieved");
+    }
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> generateToken(@RequestBody Map<String, Object> claims) {
-        System.out.println("Token request received");
+        System.out.println("Token request recieved");
         //boolean valid = service.testAuthenticate(vehicleId);
-        String jws = Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
-                .compact();
+        String jws = secretService.createJWT((Integer) claims.get("id"),300000); //5 mins for simulation purposes
         return new ResponseEntity<>(new JwtResponse(jws), HttpStatus.OK);
 
     }
+
 
 }

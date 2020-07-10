@@ -17,7 +17,7 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 @Injectable({
   providedIn: 'root'
 })
-//TODO : get owner id
+
 export class CartService {
 
   constructor(private http: HttpClient, private loginService: UserService) { }

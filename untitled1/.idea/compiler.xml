@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="user" />
-        <module name="zuul" />
         <module name="pricelist" />
+        <module name="zuul" />
+        <module name="review" />
         <module name="message" />
         <module name="eureka" />
         <module name="catalogue" />
         <module name="location" />
-        <module name="review" />
+        <module name="user" />
         <module name="request" />
         <module name="vehicle" />
       </profile>
