@@ -28,7 +28,7 @@ public class UserController {
      * @return returns logged in user
      */
     @PostMapping(value = "/loginTest", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> loginTest(@RequestBody LoginRequestDTO loginRequestDTO) throws Exception {
+    public ResponseEntity<User> loginTest(@RequestBody LoginRequestDTO loginRequestDTO) {
         User user = userService.loginTest(loginRequestDTO);
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }

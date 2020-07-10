@@ -46,7 +46,7 @@ public class VehicleClient extends WebServiceGatewaySupport {
         request.setVehicle(vehicle);
 
         GetVehicleById response = (GetVehicleById) getWebServiceTemplate()
-                .marshalSendAndReceive("http://localhost:8081/vehicle/ws/vehicle", request,
+                .marshalSendAndReceive("http://192.168.0.114:8081/vehicle/ws/vehicle", request,
                         new SoapActionCallback(
                                 "http://spring.io/guides/gs-producing-web-service/createVehicle"));
         System.out.println(response);
@@ -89,7 +89,7 @@ public class VehicleClient extends WebServiceGatewaySupport {
         System.err.println(vehicle);
 
         GetVehicleById response = (GetVehicleById) getWebServiceTemplate()
-                .marshalSendAndReceive("http://localhost:8081/vehicle/ws/vehicle", request,
+                .marshalSendAndReceive("http://192.168.0.114:8081/vehicle/ws/vehicle", request,
                         new SoapActionCallback(
                                 "http://spring.io/guides/gs-producing-web-service/createEverythingVehicle"));
         System.err.println(response);

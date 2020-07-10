@@ -6,6 +6,7 @@ import com.example.agentapp.model.enums.UserType;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserDetails {
@@ -20,6 +21,9 @@ public class UserDetails {
     @Column(name = "address", nullable = true)
     private String address;
 
+    @Column(name = "email", nullable = true, unique = true)
+    private String email;
+
     @Column(name = "business_num")
     private String businessNum;
 
@@ -29,18 +33,31 @@ public class UserDetails {
     @Column(name = "user_type", nullable = true)
     private UserType userType;
 
+    @OneToMany()
+    @JoinColumn(name = "userdetail_id") //so the new table doesnt get created
+    private Set<Penalty> penalties;
+
     private transient List<Privilege> privilegeList;
 
     public UserDetails() {
     }
 
-    public UserDetails(String fullName, String address, String businessNum, int vehicleNum, UserType userType, List<Privilege> privilegeList) {
+    public UserDetails(Long id, String fullName, String address, String email, String businessNum, int vehicleNum, UserType userType) {
+        this.id = id;
         this.fullName = fullName;
         this.address = address;
+        this.email = email;
         this.businessNum = businessNum;
         this.vehicleNum = vehicleNum;
         this.userType = userType;
-        this.privilegeList = privilegeList;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getId() {
@@ -99,14 +116,24 @@ public class UserDetails {
         this.privilegeList = privilegeList;
     }
 
+    public Set<Penalty> getPenalties() {
+        return penalties;
+    }
+
+    public void setPenalties(Set<Penalty> penalties) {
+        this.penalties = penalties;
+    }
+
     @Override
     public String toString() {
         return "UserDetails{" +
-                "fullName='" + fullName + '\'' +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
                 ", address='" + address + '\'' +
                 ", businessNum='" + businessNum + '\'' +
-                ", vehicleNum='" + vehicleNum + '\'' +
+                ", vehicleNum=" + vehicleNum +
                 ", userType=" + userType +
+                ", penalties=" + penalties +
                 ", privilegeList=" + privilegeList +
                 '}';
     }

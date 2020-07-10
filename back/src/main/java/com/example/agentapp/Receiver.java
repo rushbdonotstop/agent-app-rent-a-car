@@ -1,6 +1,6 @@
 package com.example.agentapp;
 
-import com.example.agentapp.model.Message;
+import com.example.agentapp.model.MessageForQueue;
 import com.example.agentapp.service.CoordinateService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -41,7 +41,6 @@ public class Receiver {
             //socket.echoTextMessage(message.getBody());
             this.template.convertAndSend("/chat", message.getBody()+", "+claims.get("jti"));
         }
-
         latch.countDown();
     }
 

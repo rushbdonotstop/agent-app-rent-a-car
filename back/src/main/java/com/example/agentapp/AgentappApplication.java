@@ -10,7 +10,11 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
+@EnableScheduling
 @SpringBootApplication
 public class AgentappApplication {
 
@@ -22,6 +26,12 @@ public class AgentappApplication {
 	static final String topicExchangeName = "spring-boot-exchange";
 
 	static final String queueName = "spring-boot";
+
+	@Bean
+	@LoadBalanced
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 
 	// method creates an AMQP queue
 	@Bean
@@ -58,6 +68,8 @@ public class AgentappApplication {
 	MessageListenerAdapter listenerAdapter(Receiver receiver) {
 		return new MessageListenerAdapter(receiver, "receiveMessage");
 	}
+
+
 
 //	@Bean
 //	CommandLineRunner lookup(LocationClient quoteClient) {
