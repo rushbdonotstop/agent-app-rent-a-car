@@ -109,7 +109,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-commons</artifactId>
+            <version>2.2.2.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
@@ -126,7 +131,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<schemaDirectory>${project.basedir}/src/main/resources/schemas/vehicle</schemaDirectory>
+					<schemaDirectory>${project.basedir}/src/main/resources/schemas/user</schemaDirectory>
 					<outputDirectory>${project.basedir}/src/main/java/com/example/agentapp/xmlmodel</outputDirectory>
 					<clearOutputDir>false</clearOutputDir>
 				</configuration>

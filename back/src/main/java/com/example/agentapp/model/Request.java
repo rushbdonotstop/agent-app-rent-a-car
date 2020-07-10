@@ -36,6 +36,9 @@ public class Request {
     @OneToOne
     private Bundle bundle;
 
+    @Column(nullable = false)
+    private LocalDateTime timeOfCreation;
+
     public Long getOwnerId() {
         return ownerId;
     }
@@ -106,6 +109,14 @@ public class Request {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public LocalDateTime getTimeOfCreation() {
+        return timeOfCreation;
+    }
+
+    public void setTimeOfCreation(LocalDateTime timeOfCreation) {
+        this.timeOfCreation = timeOfCreation;
     }
 
     @Override

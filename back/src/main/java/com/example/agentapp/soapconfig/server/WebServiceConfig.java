@@ -220,6 +220,21 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new SimpleXsdSchema(new ClassPathResource("schemas/user/user-privilege.xsd"));
     }
 
+    @Bean(name = "penalty")
+    public DefaultWsdl11Definition defaultWsdl11DefinitionPenalty (XsdSchema penaltySchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("PenaltyPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace("http://rentacar.com/user-penalty");
+        wsdl11Definition.setSchema(penaltySchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema penaltySchema() {
+        return new SimpleXsdSchema(new ClassPathResource("schemas/user/user-penalty.xsd"));
+    }
+
     @Bean(name = "bundle")
     public DefaultWsdl11Definition defaultWsdl11DefinitionBundle (XsdSchema bundleSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
