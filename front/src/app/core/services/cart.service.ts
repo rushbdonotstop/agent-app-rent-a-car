@@ -17,7 +17,7 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 @Injectable({
   providedIn: 'root'
 })
-//TODO : get owner id
+
 export class CartService {
 
   constructor(private http: HttpClient, private loginService: UserService) { }
@@ -78,6 +78,12 @@ export class CartService {
   updateRequests(requests: RequestAndVehicle[]) {
     var oldCart = JSON.parse(localStorage.getItem('cart'));
     oldCart.requests = requests
+    localStorage.setItem('cart', JSON.stringify(oldCart))
+  }
+
+  updateBundles(bundles: BundleAndVehicle[]) {
+    var oldCart = JSON.parse(localStorage.getItem('cart'));
+    oldCart.bundles = bundles
     localStorage.setItem('cart', JSON.stringify(oldCart))
   }
 
