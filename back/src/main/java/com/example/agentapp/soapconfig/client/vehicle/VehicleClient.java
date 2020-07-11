@@ -1,15 +1,15 @@
 package com.example.agentapp.soapconfig.client.vehicle;
 
+import com.example.agentapp.model.catalogue.*;
+import com.example.agentapp.model.location.Location;
 import com.example.agentapp.model.pricelist.Pricelist;
-import com.example.agentapp.model.vehicle.Vehicle;
 import com.example.agentapp.service.catalogue.*;
 import com.example.agentapp.service.location.LocationService;
 import com.example.agentapp.service.pricelist.PricelistService;
-import com.example.agentapp.xmlmodel.location.CreateLocation;
-import com.example.agentapp.xmlmodel.location.GetLocationById;
 import com.example.agentapp.xmlmodel.vehicle.CreateEverythingVehicle;
 import com.example.agentapp.xmlmodel.vehicle.CreateVehicle;
 import com.example.agentapp.xmlmodel.vehicle.GetVehicleById;
+import com.example.agentapp.xmlmodel.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
@@ -47,7 +47,7 @@ public class VehicleClient extends WebServiceGatewaySupport {
         request.setVehicle(vehicle);
 
         GetVehicleById response = (GetVehicleById) getWebServiceTemplate()
-                .marshalSendAndReceive("http://localhost:8081/vehicle/ws/vehicle", request,
+                .marshalSendAndReceive("http://192.168.0.114:8081/vehicle/ws/vehicle", request,
                         new SoapActionCallback(
                                 "http://spring.io/guides/gs-producing-web-service/createVehicle"));
         System.out.println(response);
@@ -58,7 +58,7 @@ public class VehicleClient extends WebServiceGatewaySupport {
 
         CreateEverythingVehicle request = new CreateEverythingVehicle();
 
-        Location location = locationService.findById(vehicle.getLocationId());
+        Location location = locationService.get(vehicle.getLocationId());
         List<Pricelist> pricelistList = pricelistService.getAllByVehicle(vehicle.getId());
         VehicleMake vehicleMake = vehicleMakeService.findOneMake(vehicle.getMakeId());
         VehicleModel vehicleModel = vehicleModelService.findOneModel(vehicle.getModelId());
@@ -90,7 +90,7 @@ public class VehicleClient extends WebServiceGatewaySupport {
         System.err.println(vehicle);
 
         GetVehicleById response = (GetVehicleById) getWebServiceTemplate()
-                .marshalSendAndReceive("http://localhost:8081/vehicle/ws/vehicle", request,
+                .marshalSendAndReceive("http://192.168.0.114:8081/vehicle/ws/vehicle", request,
                         new SoapActionCallback(
                                 "http://spring.io/guides/gs-producing-web-service/createEverythingVehicle"));
         System.err.println(response);

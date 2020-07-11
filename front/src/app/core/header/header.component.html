@@ -13,8 +13,8 @@
                                                 style=" text-shadow: 2px 2px #FF0000;">Home</a>
                                 </li>
                                 <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger"
-                                                [routerLink]="['/search']" style=" text-shadow: 2px 2px #FF0000;">Search
-                                                vehicle</a></li>
+                                                [routerLink]="['/search']" style=" text-shadow: 2px 2px #FF0000;">Search</a></li>
+                                <li *ngIf="loggedUser != null" class="nav-item"><a  style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/myVehicles']">My vehicles</a></li>
                                 <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger"
                                                 [routerLink]="['/add']" style=" text-shadow: 2px 2px #FF0000;">Add
                                                 vehicle</a></li>
@@ -27,10 +27,11 @@
                                 <li *ngIf="loggedUser == null" class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger"
                                                 [routerLink]="['/login']"
                                                 style=" text-shadow: 2px 2px #FF0000;">Login</a></li>
+                                <li *ngIf="loggedUser == null"  class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/register']">Register</a></li>
                                 <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger"
                                                 href="" [routerLink]="['/inbox']" style=" text-shadow: 2px 2px #FF0000;">Inbox</a></li>
                                 <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger"
-                                                (click)="logout()" style=" text-shadow: 2px 2px #FF0000;">Logout</a>
+                                        href="" (click)="logout()" style=" text-shadow: 2px 2px #FF0000;">Logout</a>
                                 </li>
                         </ul>
                 </div>

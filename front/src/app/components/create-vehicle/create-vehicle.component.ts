@@ -109,6 +109,7 @@ export class CreateVehicleComponent implements OnInit {
         if(result){
           this.imgURL = 'assets/vehicles/nopicture.jpg'
           this.minDate = new Date();
+          this.minDate.setDate(this.minDate.getDate() + 2)
           this.collisionProtection = false
           this.vehicleInfoValid = false
           this.vehicleInfoShow = true
@@ -387,7 +388,7 @@ export class CreateVehicleComponent implements OnInit {
         uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
   
         // Make a call to the Spring Boot Application to save the image
-        this.httpClient.post('server/vehicle/image/upload', uploadImageData, { observe: 'response' })
+        this.httpClient.post('server/vehicle/vehicle/image/upload', uploadImageData, { observe: 'response' })
           .subscribe((response) => {
             var location = new VehicleLocation()
             var splitted = this.formattedAddress.split(',')

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { Pricelist } from 'src/app/shared/models/pricelist/Pricelist';
 import { MinAndMaxPricesDTO } from 'src/app/shared/models/MinAndMaxPricesDTO';
+import { Pricelist } from 'src/app/shared/models/pricelist/Pricelist';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 

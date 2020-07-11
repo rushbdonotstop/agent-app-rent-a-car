@@ -2,8 +2,10 @@ package com.example.agentapp.controller.catalogue;
 
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.catalogue.VehicleModel;
+import com.example.agentapp.model.vehicle.Vehicle;
 import com.example.agentapp.service.catalogue.VehicleMakeService;
 import com.example.agentapp.service.catalogue.VehicleModelService;
+import com.example.agentapp.service.vehicle.SearchVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +22,9 @@ public class VehicleModelController {
 
     @Autowired
     private VehicleMakeService vehicleMakeService;
+
+    @Autowired
+    SearchVehicleService searchVehicleService;
 
 
     /**
@@ -53,6 +58,10 @@ public class VehicleModelController {
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Notification> deleteVehicleModel(@PathVariable Long id) {
         try {
+            List<Vehicle> vehicleList = searchVehicleService.findByVehicleModel(id);
+            if (vehicleList.size() != 0) {
+                return new ResponseEntity<>(new Notification("There is a vehicle registered with model id " + id + "\nModel wasn't deleted.", false), HttpStatus.CONFLICT);
+            }
             vehicleModelService.deleteOneModel(id);
             return new ResponseEntity<>(new Notification("Successfully deleted vehicle model id = " + id, true), HttpStatus.OK);
         } catch (Exception e) {
@@ -104,5 +113,15 @@ public class VehicleModelController {
         } catch (Exception e) {
             return new ResponseEntity<>(new Notification(e.getMessage(), false), HttpStatus.CONFLICT);
         }
+    }
+
+    /**
+     * POST server/catalogue/vehicleModel/createReturnObject
+     *
+     * @return return object of creating vehicle fuel type request
+     */
+    @PostMapping(value="/createReturnObject", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<VehicleModel> createReturnObject(@RequestBody VehicleModel vehicleModel) {
+        return new ResponseEntity<VehicleModel>(vehicleModelService.createModel(vehicleModel), HttpStatus.OK);
     }
 }

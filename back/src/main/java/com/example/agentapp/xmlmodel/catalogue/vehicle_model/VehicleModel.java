@@ -8,13 +8,13 @@
 
 package com.example.agentapp.xmlmodel.catalogue.vehicle_model;
 
+import com.example.agentapp.xmlmodel.catalogue.vehicle_make.VehicleMake;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-import com.example.agentapp.xmlmodel.catalogue.vehicle_make.VehicleMake;
 
 
 /**
@@ -126,8 +126,8 @@ public class VehicleModel {
                 '}';
     }
 
-    public com.example.agentapp.model.VehicleModel toModel(VehicleModel vehicleModel){
-        com.example.agentapp.model.VehicleModel vehicleModelModel = new com.example.agentapp.model.VehicleModel();
+    public com.example.agentapp.model.catalogue.VehicleModel toModel(VehicleModel vehicleModel){
+        com.example.agentapp.model.catalogue.VehicleModel vehicleModelModel = new com.example.agentapp.model.catalogue.VehicleModel();
         vehicleModelModel.setId(vehicleModel.getId());
         vehicleModelModel.setValue(vehicleModel.getValue());
         vehicleModelModel.setVehicleMake(vehicleModel.getVehicleMake().toModel(vehicleModel.getVehicleMake()));

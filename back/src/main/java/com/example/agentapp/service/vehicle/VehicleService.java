@@ -38,26 +38,28 @@ public class VehicleService {
     }
 
     public Vehicle create(Vehicle vehicle) {
-            vehicle.setId(null);
+        vehicle.setId(null);
 
-            if(invalidDate(vehicle.getStartDate(), vehicle.getEndDate())){
-                System.out.println("invalid");
-                return null;
-            }
+        if(invalidDate(vehicle.getStartDate(), vehicle.getEndDate())){
+            System.out.println("invalid");
+            return null;
+        }
 
-            if(vehicle.getMileage() < 0 || vehicle.getMileageLimit() < 0 || vehicle.getChildrenSeats() < 0){
-                System.out.println("invalid2");
-                return null;
-            }
+        if(vehicle.getMileage() < 0 || vehicle.getMileageLimit() < 0 || vehicle.getChildrenSeats() < 0){
+            System.out.println("invalid2");
+            return null;
+        }
 
-            // povezi sliku
-            System.out.println(vehicle.getImage());
-            VehicleImage img = imageRepository.save(vehicle.getImage());
-            System.out.println(vehicle);
+        // povezi sliku
+        if(vehicle.getImage() != null){
             vehicle.setImage(imageRepository.findByName(vehicle.getImage().getName()).get());
+        }
+        else{
+            vehicle.setImage(null);
+        }
 
-            Vehicle v = vehicleRepository.save(vehicle);
-            return v;
+        Vehicle v = vehicleRepository.save(vehicle);
+        return v;
 
     }
 
@@ -103,9 +105,28 @@ public class VehicleService {
     }
 
     public boolean invalidDate(LocalDateTime startDate, LocalDateTime endDate){
-        if (startDate.isAfter(endDate) || startDate.isBefore(LocalDateTime.now())){
+        if (startDate.toLocalDate().isAfter(endDate.toLocalDate()) || (startDate.toLocalDate().isBefore(LocalDateTime.now().toLocalDate()) && !startDate.toLocalDate().equals(LocalDateTime.now().toLocalDate()))){
             return true;
         }
         return false;
     }
+
+    public Boolean canUserDelete(Long userId) {
+        try {
+            if(vehicleRepository.findAllByUserId(userId).size() != 0){
+                return false;
+            }
+            else{
+                return true;
+            }
+
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public List<Vehicle> getAllFromUser(Long userId) {
+        return this.vehicleRepository.findAllByUserId(userId);
+    }
+
 }

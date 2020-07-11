@@ -69,8 +69,6 @@ public class PricelistController {
 
         Vehicle vehicle = vehicleService.get(pricelists.get(0).getVehicleId());
 
-        System.out.println(vehicleClient);
-
         GetVehicleById response = vehicleClient.createEverythingVehicle(vehicle.toXML(vehicle));
 
         System.err.println(response.getVehicleId());

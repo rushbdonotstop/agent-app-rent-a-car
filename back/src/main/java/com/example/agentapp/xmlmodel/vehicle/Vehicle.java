@@ -384,7 +384,7 @@ public class Vehicle {
 
         com.example.agentapp.model.vehicle.Vehicle vehicleModel = new com.example.agentapp.model.vehicle.Vehicle();
 
-        com.example.agentapp.model.VehicleImage image = new com.example.agentapp.model.VehicleImage();
+        com.example.agentapp.model.vehicle.VehicleImage image = new com.example.agentapp.model.vehicle.VehicleImage();
         image.setId(vehicle.getVehicleImage().getId());
         image.setName(vehicle.getVehicleImage().getName());
         image.setType(vehicle.getVehicleImage().getType());

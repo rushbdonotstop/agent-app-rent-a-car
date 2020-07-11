@@ -250,7 +250,7 @@ public class Pricelist {
 
         pricelistModel.setVehicleId(pricelist.getVehicleId());
 
-        com.example.agentapp.model.VehicleDiscount vehicleDiscountModel = new com.example.agentapp.model.VehicleDiscount();
+        com.example.agentapp.model.pricelist.VehicleDiscount vehicleDiscountModel = new com.example.agentapp.model.pricelist.VehicleDiscount();
 
         vehicleDiscountModel.setDiscount(pricelist.getVehicleDiscount().getDiscount());
         vehicleDiscountModel.setId(pricelist.getVehicleDiscount().getId());

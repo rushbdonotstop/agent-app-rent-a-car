@@ -65,4 +65,12 @@ public class VehicleMakeService {
             throw new Exception("Can't find vehicle make with id = " + id);
         }
     }
+
+    public VehicleMake createMake(VehicleMake vehicleMake) {
+        if(exist(vehicleMake)) {
+            return vehicleMakeRepository.findByValue(vehicleMake.getValue());
+        } else {
+            return vehicleMakeRepository.save(vehicleMake);
+        }
+    }
 }

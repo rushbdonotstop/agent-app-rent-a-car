@@ -156,13 +156,13 @@ public class Location {
                 '}';
     }
 
-    public com.example.agentapp.model.Location toModel(Location locationXML){
+    public com.example.agentapp.model.location.Location toModel(Location locationXML){
 
-        com.example.agentapp.model.Location locationModel = new com.example.agentapp.model.Location();
+        com.example.agentapp.model.location.Location locationModel = new com.example.agentapp.model.location.Location();
 
-        com.example.agentapp.model.State state = new com.example.agentapp.model.State();
-        com.example.agentapp.model.City city = new com.example.agentapp.model.City();
-        com.example.agentapp.model.Street street = new com.example.agentapp.model.Street();
+        com.example.agentapp.model.location.State state = new com.example.agentapp.model.location.State();
+        com.example.agentapp.model.location.City city = new com.example.agentapp.model.location.City();
+        com.example.agentapp.model.location.Street street = new com.example.agentapp.model.location.Street();
 
         state.setId(locationXML.getState().getId());
         state.setValue(locationXML.getState().getValue());

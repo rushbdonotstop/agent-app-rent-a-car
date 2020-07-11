@@ -3,7 +3,7 @@ package com.example.agentapp.service.pricelist;
 import com.example.agentapp.dto.pricelist.MinAndMaxPricesDTO;
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.pricelist.Pricelist;
-import com.example.agentapp.model.vehicle.VehicleDiscount;
+import com.example.agentapp.model.pricelist.VehicleDiscount;
 import com.example.agentapp.repository.pricelist.PricelistRepository;
 import com.example.agentapp.repository.pricelist.VehicleDiscountRepository;
 import org.joda.time.Days;
@@ -158,6 +158,10 @@ public class PricelistService {
                 if(dateRangeOutdated(pricelists.get(0)) || dateRangeInvalid(pricelists.get(0))
                         || (!pricelists.get(0).getStartDate().equals(startDate) && !pricelists.get(0).getEndDate().equals(endDate))
                         || carDays != pricelistDays){
+                    System.err.println("Pricelist size == 1 == null");
+                    System.err.println(pricelists.get(0).getStartDate());
+                    System.err.println(pricelists.get(0).getEndDate());
+                    System.err.println(carDays + " ==? " + pricelistDays);
                     return null;
                 }
                 return pricelists;

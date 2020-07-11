@@ -10,10 +10,12 @@ import com.example.agentapp.model.request.Request;
 import com.example.agentapp.model.enums.Status;
 import com.example.agentapp.repository.request.BundleRepository;
 import com.example.agentapp.repository.request.RequestRepository;
+import com.example.agentapp.repository.request.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
@@ -27,16 +29,54 @@ public class RequestService {
     @Autowired
     BundleRepository bundleRepository;
 
+    @Autowired
+    ReportRepository reportRepository;
+
     public boolean areDatesValid(LocalDateTime startDate, LocalDateTime endDate) {
-        if(startDate==null || endDate==null)
+        if (startDate == null || endDate == null)
             return false;
+
+        LocalDateTime twoDaysFromNow = LocalDateTime.now().plusDays(2);
+
         if (endDate.compareTo(startDate) >= 0 &&
-                startDate.compareTo(LocalDateTime.now()) >= 0)
+                startDate.compareTo(twoDaysFromNow) >= 0)
             return true;
         else {
             System.err.println("Invalid dates");
             return false;
         }
+    }
+
+    //perform checks
+    public boolean isRentingAllowed(RequestDTO requestDTO) {
+
+        for (Request request : requestDTO.getRequests()) {
+            if (request.getOwnerId() == null || request.getUserId() == null)
+                return false;
+            //owner cannot rent his own car
+            if (request.getOwnerId().equals(request.getUserId())) {
+                System.err.println("Owner cannot rent his own car");
+                return false;
+            }
+            if (!(areDatesValid(request.getStartDate(), request.getEndDate()) && request.getUserId() != null))
+                return false;
+        }
+        for (Bundle bundle : requestDTO.getBundles()) {
+            if (!isBundleValid(bundle))
+                return false;
+            for (Request request : requestDTO.getRequests()) {
+                if (request.getOwnerId() == null || request.getUserId() == null)
+                    return false;
+                //owner cannot rent his own car
+                if (request.getOwnerId().equals(request.getUserId())) {
+                    System.err.println("Owner cannot rent his own car");
+                    return false;
+                }
+                if (!(areDatesValid(request.getStartDate(), request.getEndDate()) && request.getUserId() != null))
+                    return false;
+            }
+        }
+        return true;
     }
 
     public boolean isBundleValid(Bundle bundle) {
@@ -74,22 +114,9 @@ public class RequestService {
     }
 
     public boolean addRequest(RequestDTO requests) {
-        //-----------------checks------------------
 
-        for (Bundle bundle : requests.getBundles()) {
-            if (!isBundleValid(bundle))
-                return false;
-            for (Request request : bundle.getRequests()) {
-                if (!(areDatesValid(request.getStartDate(), request.getEndDate()) && request.getUserId() != null))
-                    return false;
-            }
-        }
-        for (Request request : requests.getRequests()) {
-            if (!(areDatesValid(request.getStartDate(), request.getEndDate()) && request.getUserId() != null))
-                return false;
-        }
-
-        //-------------------------------------------
+        if (!isRentingAllowed(requests))
+            return false;
 
         for (Bundle bundle : requests.getBundles()) {
             Bundle newBundle = bundleRepository.saveAndFlush(new Bundle(requests.getRequests())); //contains Id
@@ -101,7 +128,9 @@ public class RequestService {
 
         }
         for (Request request : requests.getRequests()) {
+            LocalDateTime ldt = LocalDateTime.now();
             request.setStatus(Status.PENDING);
+            request.setTimeOfCreation(ldt);
             requestRepository.saveAndFlush(request);
         }
         return true;
@@ -118,7 +147,7 @@ public class RequestService {
 
     public boolean addPhysicalRenting(Request request) {
 
-        if(request.getVehicleId()==null)
+        if (request.getVehicleId() == null)
             return false;
 
         LocalDateTime startdate = request.getStartDate();
@@ -156,32 +185,55 @@ public class RequestService {
         } else return false;
     }
 
-    public List<Request> getAllRequestsByOwner (Long ownerId) {
-        List<Request> requestsList = requestRepository.findAll();
-        List<Request> newRequestsList = new ArrayList<>();
-        for (Request request : requestsList) {
-            if (request.getOwnerId().equals(ownerId)) {
-                newRequestsList.add(request);
+    public List<Request> getAllRequestsForOwner(Long ownerId) {
+        List<Request> requestList = requestRepository.findAll();
+        List<Request> newRequestList = new ArrayList<>();
+        for (Request request : requestList) {
+            if (request.getOwnerId().equals(ownerId) && request.getBundle() != null) {
+                newRequestList.add(request);
             }
         }
-        return newRequestsList;
+        return newRequestList;
     }
 
-    public List<Request> getAllRequestsByUser (Long userId) {
-        List<Request> requestsList = requestRepository.findAll();
-        List<Request> newRequestsList = new ArrayList<>();
-        for (Request request : requestsList) {
-            if (request.getUserId().equals(userId)) {
-                newRequestsList.add(request);
+    //RETURNING LIST OF REQUESTS THAT ARE NOT IN THE BUNDLE!!!
+    public List<Request> getSingleRequestsForOwner(Long ownerId) {
+        List<Request> requestList = requestRepository.findAll();
+        List<Request> newRequestList = new ArrayList<>();
+        for (Request request : requestList) {
+            if (request.getOwnerId().equals(ownerId) && request.getBundle() == null) {
+                newRequestList.add(request);
             }
         }
-        return newRequestsList;
+        return newRequestList;
     }
-    //TYPE OF USER - PARAMETER FOR CHOOSING OWNER USERNAME OR BUYER USERNAME
-    //USE 0 FOR OWNER USERNAME
-    //USE 1 FOR BUYER USERNAME
-    public List<RequestForFrontDTO> getDtoList (int typeOfUser, List<Request> requestsList, List<UserDTO> userDTOList, List<VehicleMainViewDTO> vehicleList) {
+
+    public List<Request> getAllRequestsForUser(Long userId) {
+        List<Request> requestList = requestRepository.findAll();
+        List<Request> newRequestList = new ArrayList<>();
+        for (Request request : requestList) {
+            if (request.getUserId().equals(userId) && request.getBundle() != null) {
+                newRequestList.add(request);
+            }
+        }
+        return newRequestList;
+    }
+
+    //RETURNING LIST OF REQUESTS THAT ARE NOT IN THE BUNDLE!!!
+    public List<Request> getSingleRequestsForUser(Long userId) {
+        List<Request> requestList = requestRepository.findAll();
+        List<Request> newRequestList = new ArrayList<>();
+        for (Request request : requestList) {
+            if (request.getUserId().equals(userId) && request.getBundle() == null) {
+                newRequestList.add(request);
+            }
+        }
+        return newRequestList;
+    }
+
+    public List<RequestForFrontDTO> getDTOListForOwner(List<Request> requestsList, List<UserDTO> userDTOList, List<VehicleMainViewDTO> vehiclesList) {
         List<RequestForFrontDTO> newDTOList = new ArrayList<>();
+
         for (Request request : requestsList) {
             RequestForFrontDTO dto = new RequestForFrontDTO();
             dto.setId(request.getId());
@@ -189,33 +241,58 @@ public class RequestService {
             dto.setStartDate(request.getStartDate());
             dto.setEndDate(request.getEndDate());
             dto.setStatus(request.getStatus());
-            //SETTING USERNAME FOR REQUEST DTO
+            dto.setVehicleId(request.getVehicleId());
             for (UserDTO user : userDTOList) {
-                if (typeOfUser == 0) {
-                    if (user.getId() == request.getOwnerId()) {
-                        dto.setUsername(user.getUsername());
-                        break;
-                    }
-                } else {
-                    if (user.getId() == request.getUserId()) {
-                        dto.setUsername(user.getUsername());
-                        break;
-                    }
+                if (user.getId().equals(request.getUserId())) {
+                    dto.setUsername(user.getUsername());
                 }
             }
-
             //SETTING VEHICLE MAKE AND MODEL FOR REQUEST DTO
-            for (VehicleMainViewDTO vehicle : vehicleList) {
+            for (VehicleMainViewDTO vehicle : vehiclesList) {
                 if (vehicle.getId().equals(request.getVehicleId())) {
                     dto.setMakePlusModel(vehicle.getMake() + " " + vehicle.getModel());
                     break;
                 }
             }
-
-            dto.setBundleId(request.getBundle().getId());
+            dto.setVehicleId((request.getVehicleId()));
+            if (request.getBundle() != null) {
+                dto.setBundleId(request.getBundle().getId());
+            }
             newDTOList.add(dto);
-        }
 
+        }
+        return newDTOList;
+    }
+
+    public List<RequestForFrontDTO> getDTOListForUser(List<Request> requestsList, List<UserDTO> userDTOList, List<VehicleMainViewDTO> vehiclesList) {
+        List<RequestForFrontDTO> newDTOList = new ArrayList<>();
+
+        for (Request request : requestsList) {
+            RequestForFrontDTO dto = new RequestForFrontDTO();
+            dto.setId(request.getId());
+            dto.setTotalCost(request.getTotalCost());
+            dto.setStartDate(request.getStartDate());
+            dto.setEndDate(request.getEndDate());
+            dto.setVehicleId(request.getVehicleId());
+            dto.setStatus(request.getStatus());
+            for (UserDTO user : userDTOList) {
+                if (user.getId().equals(request.getOwnerId())) {
+                    dto.setUsername(user.getUsername());
+                }
+            }
+            //SETTING VEHICLE MAKE AND MODEL FOR REQUEST DTO
+            for (VehicleMainViewDTO vehicle : vehiclesList) {
+                if (vehicle.getId().equals(request.getVehicleId())) {
+                    dto.setMakePlusModel(vehicle.getMake() + " " + vehicle.getModel());
+                    break;
+                }
+            }
+            if (request.getBundle() != null) {
+                dto.setBundleId(request.getBundle().getId());
+            }
+            newDTOList.add(dto);
+
+        }
         return newDTOList;
     }
 
@@ -229,6 +306,7 @@ public class RequestService {
         for (Long bundleId : bundleIdSet) {
             BundleDTO dto = new BundleDTO();
             for (RequestForFrontDTO request : requestList) {
+                System.out.println("VELICINA REQUEST LISTE JE: " + requestList.size());
                 dto.setId(bundleId);
                 if (request.getBundleId().equals(bundleId)) {
                     dto.getRequestsList().add(request);
@@ -243,5 +321,157 @@ public class RequestService {
             bundleList.add(dto);
         }
         return bundleList;
+    }
+
+    public boolean changeRequestStatusToPaid(Long requestId) {
+        Request req = requestRepository.findById(requestId).get();
+        List<Request> requestList = requestRepository.findAll();
+
+        for (Request request : requestList) {
+            if (request.getId().equals(req.getId())) {
+                continue;
+            }
+
+            if (request.getVehicleId().equals(req.getVehicleId()) && request.getStatus().equals(Status.PAID) && (request.getStartDate().isBefore(req.getEndDate()) && req.getStartDate().isBefore(request.getEndDate()))) {
+                return false;
+            }
+
+            if (request.getVehicleId().equals(req.getVehicleId()) && request.getStatus().equals(Status.PENDING) && (request.getStartDate().isBefore(req.getEndDate()) && req.getStartDate().isBefore(request.getEndDate()))) {
+                request.setStatus(Status.CANCELLED);
+            }
+        }
+        req.setStatus(Status.PAID);
+        requestRepository.save(req);
+        return true;
+    }
+
+    //RETURNS TRUE IF ALL REQUESTS ARE CHANGED TO STATUS PAID AND, ALL OTHER REQUEST ARE CHANGED TO CANCELED IF DATES OVERLAP
+    //RETURN FALSE IF THERE IS ALREADY PAID REQUEST WITH DATE THAT OVERLAP
+    public boolean changeBundleStatusToPaid(Long bundleId) {
+        boolean value = true;
+        Bundle bundle = bundleRepository.findById(bundleId).get();
+        List<Request> requestList = requestRepository.bundleMembers(bundle);
+        for (Request request : requestList) {
+            if (request.getBundle().getId().equals(bundleId)) {
+                value = changeRequestStatusToPaid(request.getId());
+            }
+        }
+
+        return value;
+    }
+
+    public boolean changeRequestStatusToCancelled(Long requestId) {
+        Request req = requestRepository.findById(requestId).get();
+        req.setStatus(Status.CANCELLED);
+        requestRepository.save(req);
+        return true;
+    }
+
+    public boolean changeBundleStatusToCancelled(Long bundleId) {
+        Bundle bundle = bundleRepository.findById(bundleId).get();
+        List<Request> requestList = requestRepository.bundleMembers(bundle);
+        for (Request request : requestList) {
+            boolean value = changeRequestStatusToCancelled(request.getId());
+        }
+        return true;
+    }
+
+    public Boolean canUserPostReview(Long vehicleId, Long userId) {
+        try {
+            List<Request> requests = requestRepository.findAllByVehicleIdAndUserIdAndStatus(vehicleId, userId, Status.PAID);
+
+            for (Request r : requests) {
+                if (r.getEndDate().isBefore(LocalDateTime.now())) {
+                    return true;
+                }
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("Exception in canUserPostReview");
+        }
+        return false;
+    }
+
+    public List<Request> rentingFinishedRequests(Long ownerId) {
+        List<Request> finishedRequests = this.requestRepository.rentingFinishedRequests(LocalDateTime.now());
+        List<Request> nonReviewedRequests = new ArrayList<>();
+        for (Request r : finishedRequests) {
+            System.out.println("request already reviewed here:" + reportRepository.findByVehicleIdAndStartDateAndEndDate(r.getVehicleId(), r.getStartDate(), r.getEndDate()).size());
+            if (reportRepository.findByVehicleIdAndStartDateAndEndDate(r.getVehicleId(), r.getStartDate(), r.getEndDate()).size() == 0 && r.getOwnerId().equals(ownerId)) {
+                nonReviewedRequests.add(r);
+            }
+        }
+        return nonReviewedRequests;
+    }
+
+    public List<Request> rentingFinishedRequestsInBundle(Long ownerId) {
+        List<Request> requestsInBundles = new ArrayList<>();
+        for (Request r : this.requestRepository.rentingFinishedRequestsInBundle(LocalDateTime.now()))
+            if (r.getBundle() != null && reportRepository.findByVehicleIdAndStartDateAndEndDate(r.getVehicleId(), r.getStartDate(), r.getEndDate()).size() == 0 && r.getOwnerId().equals(ownerId)) {
+                requestsInBundles.add(r);
+            }
+        return requestsInBundles;
+    }
+
+    public List<RequestForFrontDTO> getDTOList(List<Request> requestsList, List<UserDTO> userDTOList, List<VehicleMainViewDTO> vehiclesList) {
+        List<RequestForFrontDTO> newDTOList = new ArrayList<>();
+
+        for (Request request : requestsList) {
+            RequestForFrontDTO dto = new RequestForFrontDTO();
+            dto.setId(request.getId());
+            dto.setTotalCost(request.getTotalCost());
+            dto.setStartDate(request.getStartDate());
+            dto.setEndDate(request.getEndDate());
+            dto.setStatus(request.getStatus());
+            for (UserDTO user : userDTOList) {
+                if (user.getId().equals(request.getUserId())) {
+                    dto.setUsername(user.getUsername());
+                }
+            }
+            //SETTING VEHICLE MAKE AND MODEL FOR REQUEST DTO
+            for (VehicleMainViewDTO vehicle : vehiclesList) {
+                if (vehicle.getId().equals(request.getVehicleId())) {
+                    dto.setMakePlusModel(vehicle.getMake() + " " + vehicle.getModel());
+                    break;
+                }
+            }
+            dto.setVehicleId((request.getVehicleId()));
+            if (request.getBundle() != null) {
+                dto.setBundleId(request.getBundle().getId());
+            }
+            newDTOList.add(dto);
+
+        }
+        return newDTOList;
+    }
+
+    public Boolean canUserDelete(Long userId) {
+        try {
+            if(requestRepository.findByStatus(Status.PENDING).size() != 0){
+                return false;
+            }
+            else{
+                return true;
+            }
+
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public void startScheduledTask() {
+        List<Request> requestList = requestRepository.findAll();
+        LocalDateTime now = LocalDateTime.now();
+
+        for (Request request : requestList) {
+            if (request.getStatus().equals(Status.PENDING)) {
+                long hours = ChronoUnit.HOURS.between(request.getTimeOfCreation(), now);
+                System.err.println("Sati proslo: " + hours);
+                if (hours > 23) {
+                    request.setStatus(Status.CANCELLED);
+                    requestRepository.save(request);
+                }
+            }
+        }
     }
 }

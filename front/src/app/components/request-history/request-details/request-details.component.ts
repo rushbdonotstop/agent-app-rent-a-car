@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { RequestDTO } from 'src/app/shared/models/request/requestDTO';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource, MatSnackBar, MatDialog } from '@angular/material';
 import { RequestService } from 'src/app/core/services/request.service';
-import { BundleDTO } from 'src/app/shared/models/request/bundleDTO';
-import { User } from 'src/app/shared/models/user/User';
 import { ReportDialogComponent } from '../../report-dialog/report-dialog.component';
+import { RequestStatus } from 'src/app/shared/models/request/RequestStatus';
+import { VehicleDetailsComponent } from '../../vehicle-details/vehicle-details.component';
 
 @Component({
   selector: 'pm-request-details',
@@ -20,7 +20,7 @@ export class RequestDetailsComponent implements OnInit {
   userId: number;
   selectedHistory: String;
   dataSource: MatTableDataSource<RequestDTO>;
-  displayedColumns: string[] = ['makePlusModel', 'startDate', 'endDate', 'totalCost', 'stsatus'];
+  displayedColumns: string[] = ['makePlusModel', 'startDate', 'endDate', 'totalCost', 'status', 'report', 'review'];
   isUserAgent: boolean;
 
   constructor(public dialogRef: MatDialogRef<RequestDetailsComponent>,
@@ -36,11 +36,10 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    var loggedInUser = new User()
-    loggedInUser = JSON.parse(localStorage.getItem('userObject'))
+    var loggedInUser = JSON.parse(localStorage.getItem('userObject'))
     if (loggedInUser.userDetails.userType.toString() == "AGENT") {
       this.isUserAgent = true;
-      this.displayedColumns = ['makePlusModel', 'startDate', 'endDate', 'totalCost', 'status', 'report'];
+      this.displayedColumns = ['makePlusModel', 'startDate', 'endDate', 'totalCost', 'status', 'report', 'review'];
     }
   }
 
@@ -50,7 +49,7 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   accept() {
-    this.requestService.changeStatusOfRequest(this.bundleId, 1).subscribe(
+    this.requestService.changeStatusOfBundle(this.bundleId, 1).subscribe(
       data => {
         if (data) {
           this._snackBar.open('Request/s are accepted successfully.', "", {
@@ -69,7 +68,7 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   decline() {
-    this.requestService.changeStatusOfRequest(this.bundleId, 2).subscribe(
+    this.requestService.changeStatusOfBundle(this.bundleId, 2).subscribe(
       data => {
         if (data) {
           this._snackBar.open('Request/s are canceled successfully.', "", {
@@ -87,7 +86,30 @@ export class RequestDetailsComponent implements OnInit {
     )
   }
 
+  canUserReview(request: RequestDTO) {
+    //alert('Status je:' + request.status.toString() + '  a selected je: ' + this.selectedHistory)
+    if (request.status.toString() == "PAID" && this.selectedHistory == 'sentRequests') {
+      return true;
+    } else { 
+      return false;
+    }
+  }
+
+  leaveReview(vehicleId: number) {
+    alert('id je: ' + vehicleId);
+    const reviewDialogRef = this.dialog.open(VehicleDetailsComponent, {
+      width: '1200px',
+      height: '700px',
+      data: { id: vehicleId }
+    });
+
+    reviewDialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   createReport(element: RequestDTO) {
+    element.viewMode = false;
     const dialogRef = this.dialog.open(ReportDialogComponent, {
       width: '400px',
       data: element
@@ -98,11 +120,42 @@ export class RequestDetailsComponent implements OnInit {
   }
 
   isRentingFinished(request: RequestDTO) {
-    if (new Date(request.endDate) < new Date()){
+    if (new Date(request.endDate) < new Date() && request.status.toString() == 'PAID' && this.selectedHistory == 'finishedRequests') {
       return true;
     }
-    else{
+    else {
       return false;
     };
+  }
+
+  
+  shouldButtonsBeShownAcceptDecline(requestStatus : RequestStatus) {
+    if ((requestStatus.toString() == 'PENDING') && (this.selectedHistory == "receivedRequests")) {
+      return true;
+    } else { 
+      return false;
+    }
+  }
+
+  shouldCancelBeShown(requestStatus: RequestStatus) {
+    if ((requestStatus.toString() == 'PENDING') && (this.selectedHistory == 'sentRequests')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  agentLogged() {
+    if (JSON.parse(localStorage.getItem('userObject')).userDetails.userType == "AGENT")
+      return true
+    return false
+  }
+
+  showTwoOrOneButton() {
+    if (this.selectedHistory == 'receivedRequests') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

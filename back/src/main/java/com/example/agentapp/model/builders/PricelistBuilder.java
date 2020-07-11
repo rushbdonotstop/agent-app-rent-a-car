@@ -1,7 +1,7 @@
 package com.example.agentapp.model.builders;
 
 import com.example.agentapp.model.pricelist.Pricelist;
-import com.example.agentapp.model.vehicle.VehicleDiscount;
+import com.example.agentapp.model.pricelist.VehicleDiscount;
 
 import java.time.LocalDateTime;
 

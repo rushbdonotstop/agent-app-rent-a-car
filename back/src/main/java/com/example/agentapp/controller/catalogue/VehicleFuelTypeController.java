@@ -2,7 +2,9 @@ package com.example.agentapp.controller.catalogue;
 
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.catalogue.VehicleFuelType;
+import com.example.agentapp.model.vehicle.Vehicle;
 import com.example.agentapp.service.catalogue.VehicleFuelTypeService;
+import com.example.agentapp.service.vehicle.SearchVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +18,9 @@ import java.util.List;
 public class VehicleFuelTypeController {
     @Autowired
     private VehicleFuelTypeService vehicleFuelTypeService;
+
+    @Autowired
+    SearchVehicleService searchVehicleService;
 
     /**
      * GET server/catalogue/vehicleFuelType/{id}
@@ -39,6 +44,10 @@ public class VehicleFuelTypeController {
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Notification> deleteVehicleFuelType(@PathVariable Long id) {
         try {
+            List<Vehicle> vehicleList = searchVehicleService.getVehiclesByFuel(searchVehicleService.findAll(), id);
+            if (vehicleList.size() != 0) {
+                return new ResponseEntity<>(new Notification("There is a vehicle registered with fuel type id " + id + "\nFuel type wasn't deleted.", false), HttpStatus.CONFLICT);
+            }
             vehicleFuelTypeService.deleteOneFuelType(id);
             return new ResponseEntity<>(new Notification("Successfully deleted fuel type id = " + id, true), HttpStatus.OK);
         } catch (Exception e) {
@@ -91,5 +100,10 @@ public class VehicleFuelTypeController {
         } catch (Exception e) {
             return new ResponseEntity<>(new Notification(e.getMessage(), false), HttpStatus.CONFLICT);
         }
+    }
+
+    @PostMapping(value="/createReturnObject", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<VehicleFuelType> createReturnObject(@RequestBody VehicleFuelType vehicleFuelType) {
+        return new ResponseEntity<VehicleFuelType>(vehicleFuelTypeService.createFuelType(vehicleFuelType), HttpStatus.OK);
     }
 }

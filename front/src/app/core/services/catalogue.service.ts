@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { NotificationFromServer } from 'src/app/shared/models/Notification';
 import { CatalogueItem } from 'src/app/shared/models/catalogue/CatalogueItem';
 import { VehicleModel } from 'src/app/shared/models/catalogue/VehicleModel';
-import { NotificationFromServer } from 'src/app/shared/models/Notification';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 

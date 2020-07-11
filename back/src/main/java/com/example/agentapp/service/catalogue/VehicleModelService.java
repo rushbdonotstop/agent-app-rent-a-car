@@ -67,4 +67,12 @@ public class VehicleModelService {
             throw new Exception("Can't find vehicle model with id = " + id);
         }
     }
+
+    public VehicleModel createModel(VehicleModel vehicleModel) {
+        if(exist(vehicleModel)) {
+            return vehicleModelRepository.findByValue(vehicleModel.getValue());
+        } else {
+            return vehicleModelRepository.save(vehicleModel);
+        }
+    }
 }

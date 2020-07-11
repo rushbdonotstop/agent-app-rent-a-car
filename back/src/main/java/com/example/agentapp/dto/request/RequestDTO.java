@@ -1,14 +1,17 @@
 package com.example.agentapp.dto.request;
 
+import com.example.agentapp.model.enums.Status;
 import com.example.agentapp.model.request.Bundle;
 import com.example.agentapp.model.request.Request;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequestDTO {
 
-    List<Request> requests;
-    List<Bundle> bundles;
+    List<Request> requests = new ArrayList<>();
+    List<Bundle> bundles = new ArrayList<>();
 
     public List<Request> getRequests() {
         return requests;

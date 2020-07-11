@@ -1,5 +1,10 @@
 package com.example.agentapp.service.location;
 
+import com.example.agentapp.model.Notification;
+import com.example.agentapp.model.location.City;
+import com.example.agentapp.model.location.Location;
+import com.example.agentapp.model.location.State;
+import com.example.agentapp.model.location.Street;
 import com.example.agentapp.repository.location.CityRepository;
 import com.example.agentapp.repository.location.LocationRepository;
 import com.example.agentapp.repository.location.StateRepository;
@@ -57,39 +62,39 @@ public class LocationService {
 
     public Location create(Location location) {
         Location locationNew = null;
-        try{
-            if(locationRepository.findByStateAndCityAndStreet(location.getState().getValue(), location.getCity().getValue(), location.getStreet().getValue()) != null){
-                locationNew = locationRepository.findByStateAndCityAndStreet(location.getState().getValue(), location.getCity().getValue(), location.getStreet().getValue());
-            }
-            else{
-                State stateObject = stateRepository.findByValue(location.getState().getValue());
-                if (stateObject == null){
-                    stateObject = new State();
-                    stateObject.setValue(location.getState().getValue());
-                    stateObject = stateRepository.save(stateObject);
-                }
-                City cityObject = cityRepository.findByValue(location.getCity().getValue());
-                if (cityObject == null){
-                    cityObject = new City();
-                    cityObject.setValue(location.getCity().getValue());
-                    cityObject = cityRepository.save(cityObject);
-                }
-                Street streetObject = streetRepository.findByValue(location.getStreet().getValue());
-                if (streetObject == null){
-                    streetObject = new Street();
-                    streetObject.setValue(location.getStreet().getValue());
-                    streetObject = streetRepository.save(streetObject);
-                }
-                locationNew = new Location();
-                locationNew.setCity(cityObject);
-                locationNew.setState(stateObject);
-                locationNew.setStreet(streetObject);
-                locationNew = locationRepository.save(locationNew);
-            }
+//        try{
+        if(locationRepository.findByStateAndCityAndStreet(location.getState().getValue(), location.getCity().getValue(), location.getStreet().getValue()) != null){
+            locationNew = locationRepository.findByStateAndCityAndStreet(location.getState().getValue(), location.getCity().getValue(), location.getStreet().getValue());
         }
-        catch (Exception e){
-
+        else{
+            State stateObject = stateRepository.findByValue(location.getState().getValue());
+            if (stateObject == null){
+                stateObject = new State();
+                stateObject.setValue(location.getState().getValue());
+                stateObject = stateRepository.save(stateObject);
+            }
+            City cityObject = cityRepository.findByValue(location.getCity().getValue());
+            if (cityObject == null){
+                cityObject = new City();
+                cityObject.setValue(location.getCity().getValue());
+                cityObject = cityRepository.save(cityObject);
+            }
+            Street streetObject = streetRepository.findByValue(location.getStreet().getValue());
+            if (streetObject == null){
+                streetObject = new Street();
+                streetObject.setValue(location.getStreet().getValue());
+                streetObject = streetRepository.save(streetObject);
+            }
+            locationNew = new Location();
+            locationNew.setCity(cityObject);
+            locationNew.setState(stateObject);
+            locationNew.setStreet(streetObject);
+            locationNew = locationRepository.save(locationNew);
         }
+//        }
+//        catch (Exception e){
+//
+//        }
         return locationNew;
     }
 
@@ -132,7 +137,6 @@ public class LocationService {
         return this.locationRepository.getCitiesByState(stateId);
     }
 
-    public Location findById(long locationId) {
-        return locationRepository.findById(locationId).get();
+    public void createAgentLocation(Location toModel) {
     }
 }

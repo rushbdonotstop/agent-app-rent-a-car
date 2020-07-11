@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b436d6e-7379-4814-9096-125a944e0603" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
@@ -70,6 +71,212 @@
       <change beforePath="$PROJECT_DIR$/front/src/app/shared/models/cart/Request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/shared/models/cart/Request.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/shared/models/catalogue/CatalogueItem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/shared/models/catalogue/CatalogueItem.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/app/shared/models/vehicle/VehicleMainViewDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/shared/models/vehicle/VehicleMainViewDTO.ts" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/client/ClientConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/client/user/UserClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/client/vehicle/VehicleClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/server/LocationEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/server/UserEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/server/VehicleEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/soapconfig/server/WebServiceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/bundle/Bundle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/bundle/GetAllBundle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/bundle/GetBundle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/bundle/GetBundleById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/bundle/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/bundle/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/CreateVehicleFuelType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/DeleteVehicleFuelTypeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/GetAllVehicleFuelType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/GetVehicleFuelType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/GetVehicleFuelTypeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/UpdateVehicleFuelType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/VehicleFuelType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_fuel_type/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/CreateVehicleMake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/DeleteVehicleMakeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/GetAllVehicleMake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/GetVehicleMake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/GetVehicleMakeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/UpdateVehicleMake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/VehicleMake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_make/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/CreateVehicleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/DeleteVehicleModelById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/GetAllVehicleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/GetVehicleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/GetVehicleModelById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/UpdateVehicleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/VehicleModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_model/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/CreateVehicleStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/DeleteVehicleStyleById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/GetAllVehicleStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/GetVehicleStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/GetVehicleStyleById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/UpdateVehicleStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/VehicleStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_style/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/CreateVehicleTransmission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/DeleteVehicleTransmissionById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/GetAllVehicleTransmission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/GetVehicleTransmission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/GetVehicleTransmissionById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/UpdateVehicleTransmission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/VehicleTransmission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/catalogue/vehicle_transmission/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/CreateLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/DeleteLocationById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/GetAllLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/GetLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/GetLocationById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/UpdateLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/city/City.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/city/GetAllCity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/city/GetCity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/city/GetCityById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/city/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/city/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/state/GetAllState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/state/GetState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/state/GetStateById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/state/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/state/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/state/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/street/GetAllStreet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/street/GetStreet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/street/GetStreetById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/street/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/street/Street.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/location/street/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/CreatePricelists.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/DeletePricelistById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/GetAllPricelist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/GetPricelist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/GetPricelistById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/Pricelist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/UpdatePricelists.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/vehicle_discount/GetAllVehicleDiscount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/vehicle_discount/GetVehicleDiscount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/vehicle_discount/GetVehicleDiscountById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/vehicle_discount/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/vehicle_discount/VehicleDiscount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/pricelist/vehicle_discount/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/request/GetAllRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/request/GetRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/request/GetRequestById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/request/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/request/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/request/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/CreateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/DeleteUserById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/GetAllUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/GetUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/GetUserById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/UpdateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_details/GetAllUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_details/GetUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_details/GetUserDetailsById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_details/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_details/UserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_details/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_privilege/GetAllUserPrivilege.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_privilege/GetUserPrivilege.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_privilege/GetUserPrivilegeById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_privilege/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_privilege/UserPrivilege.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/user/user_privilege/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/CreateEverythingVehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/CreateVehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/DeleteVehicleById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/GetAllVehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/GetVehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/GetVehicleById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/UpdateVehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/Vehicle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/vehicle_image/GetAllVehicleImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/vehicle_image/GetVehicleImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/vehicle_image/GetVehicleImageById.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/vehicle_image/ObjectFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/vehicle_image/VehicleImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/xmlmodel/vehicle/vehicle_image/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/catalogue/vehicle-fuel-type.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/catalogue/vehicle-make.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/catalogue/vehicle-model.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/catalogue/vehicle-style.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/catalogue/vehicle-transmission.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/location/city.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/location/location.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/location/state.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/location/street.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/pricelist/pricelist.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/pricelist/vehicle-discount.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/request/bundle.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/request/request.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/user/user-details.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/user/user-privilege.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/user/user.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/vehicle/vehicle-image.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back/src/main/resources/schemas/vehicle/vehicle.xsd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/AgentappApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/AgentappApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/LocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/PricelistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/PricelistController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/SearchVehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/SearchVehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/StateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/StateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/StreetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/StreetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/UserDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/UserDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/UserPrivilegeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/UserPrivilegeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleFuelTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleFuelTypeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleMakeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleMakeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleModelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleStyleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleStyleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleTransmissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/controller/VehicleTransmissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/Pricelist.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/Pricelist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleFuelType.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleFuelType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleMake.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleMake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleTransmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/VehicleTransmission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/builder/PricelistBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/model/builder/PricelistBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/BundleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/BundleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/LocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/LocationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/RequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/RequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/VehicleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/repository/VehicleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/PricelistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/PricelistService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/UserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/UserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/UserPrivilegeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/UserPrivilegeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleFuelTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleFuelTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleMakeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleMakeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleModelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleModelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleStyleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleStyleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleTransmissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/java/com/example/agentapp/service/VehicleTransmissionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/data-postgres.sql" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/data-postgres.sql" afterDir="false" />
+>>>>>>> 9c71ba7e1528db834a088555c96e01e1ccfecd4e
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +296,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/back" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -102,12 +309,18 @@
       <option name="presentableId" value="Default" />
       <updated>1592089171718</updated>
       <workItem from="1592089175888" duration="57000" />
+<<<<<<< HEAD
       <workItem from="1594305922760" duration="2336000" />
       <workItem from="1594478829245" duration="65000" />
+=======
+      <workItem from="1592763179893" duration="11000" />
+      <workItem from="1592765437672" duration="193000" />
+>>>>>>> 9c71ba7e1528db834a088555c96e01e1ccfecd4e
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
+<<<<<<< HEAD
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
@@ -117,5 +330,14 @@
     <state x="-1732" y="125" key="FileChooserDialogImpl/0.0.1600.860/-1920.-98.1920.1040@-1920.-98.1920.1040" timestamp="1594318490278" />
     <state x="157" y="184" key="FileChooserDialogImpl/0.0.1600.860/-1920.-98.1920.1040@0.0.1600.860" timestamp="1594478892858" />
     <state x="157" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1592089236181" />
+=======
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="157" y="184" key="FileChooserDialogImpl" timestamp="1592763189146">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="157" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1592763189146" />
+>>>>>>> 9c71ba7e1528db834a088555c96e01e1ccfecd4e
   </component>
 </project>

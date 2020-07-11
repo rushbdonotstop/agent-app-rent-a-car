@@ -15,6 +15,10 @@ export class ReportService {
 
   constructor(private http: HttpClient) { }
 
+  getAllFromVehicle(vehicleId: number) {
+    return this.http.get<Report[]>('server/report/vehicle/'+vehicleId, httpOptions);
+  }
+
   sendReport(report:Report){
     return this.http.post<Report>('server/report',report,httpOptions);
   }

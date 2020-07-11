@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { SearchParams } from 'src/app/shared/models/SearchParams';
+import { Statistics } from 'src/app/shared/models/statistic/Statistics';
 import { VehicleMainViewDTO } from 'src/app/shared/models/vehicle/VehicleMainViewDTO';
 import { Vehicle } from 'src/app/shared/models/vehicle/Vehicle';
-import { SearchParams } from 'src/app/shared/models/SearchParams';
 import { Image } from 'src/app/shared/models/vehicle/Image';
-import { Statistics } from 'src/app/shared/models/statistic/Statistics';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
@@ -14,6 +14,10 @@ const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/jso
 export class VehicleService {
 
   constructor(private http: HttpClient) { }
+
+  getAllFromUser(id: number) {
+    return this.http.get<VehicleMainViewDTO[]>('server/search/user/'+id, httpOptions);
+  }
 
   getAll() {
     return this.http.get<VehicleMainViewDTO[]>('server/search',  httpOptions);

@@ -6,8 +6,12 @@ import com.example.agentapp.dto.user.LoginRequestDTO;
 import com.example.agentapp.dto.user.UserDTO;
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.user.User;
+import com.example.agentapp.service.request.RequestService;
 import com.example.agentapp.service.user.UserService;
+import com.example.agentapp.service.vehicle.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +26,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private VehicleService vehicleService;
+
+    @Autowired
+    private RequestService requestService;
+
     /**
      * GET /user/login
      *
      * @return returns logged in user
      */
     @PostMapping(value = "/loginTest", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> loginTest(@RequestBody LoginRequestDTO loginRequestDTO) throws Exception {
+    public ResponseEntity<User> loginTest(@RequestBody LoginRequestDTO loginRequestDTO) {
         User user = userService.loginTest(loginRequestDTO);
+        if (user == null) {
+            System.err.println("USER JE NULL");
+        }
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
@@ -76,7 +89,7 @@ public class UserController {
      *
      * @return returns object of type UserDTO with user id and username
      */
-    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List> getAllUsers() throws Exception {
         return new ResponseEntity<List>(userService.getAllUsers(), HttpStatus.OK);
     }
@@ -86,8 +99,8 @@ public class UserController {
      *
      * @return returns object of type UserDTO with user id and username
      */
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDTO> getOneUser(@RequestParam(value = "id", required = true) Long id) throws Exception {
+    @GetMapping(value= "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDTO> getOneUser(@PathVariable Long id) throws Exception {
         try {
             return new ResponseEntity<UserDTO>(userService.getOneUser(id), HttpStatus.OK);
         } catch (Exception e) {
@@ -130,14 +143,31 @@ public class UserController {
      *
      * @return returns notification
      */
-    @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Notification> putUser(@RequestParam(value = "id", required = true) Long id) throws Exception {
+    @DeleteMapping(value="/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Notification> deleteUser(@RequestParam(value = "id", required = true) Long id) throws Exception {
         try {
-            userService.deleteUser(id);
+            boolean hasRequest = userHasRequest(id);
+            boolean hasVehicle = userHasVehicle(id);
+
+            if(hasRequest || hasVehicle){
+                return new ResponseEntity<Notification>(new Notification("User can't be deleted.", true), HttpStatus.OK);
+            }
+            else{
+                userService.deleteUser(id);
+            }
+
             return new ResponseEntity<Notification>(new Notification("User with id " + id + " deleted.", true), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new Notification(e.getMessage(), false), HttpStatus.CONFLICT);
         }
+    }
+
+    public boolean userHasVehicle(Long id) {
+        return vehicleService.canUserDelete(id);
+    }
+
+    public boolean userHasRequest(Long id) {
+        return requestService.canUserDelete(id);
     }
 
     /**

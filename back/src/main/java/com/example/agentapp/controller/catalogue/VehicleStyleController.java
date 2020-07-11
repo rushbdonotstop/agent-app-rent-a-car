@@ -2,7 +2,9 @@ package com.example.agentapp.controller.catalogue;
 
 import com.example.agentapp.model.Notification;
 import com.example.agentapp.model.catalogue.VehicleStyle;
+import com.example.agentapp.model.vehicle.Vehicle;
 import com.example.agentapp.service.catalogue.VehicleStyleService;
+import com.example.agentapp.service.vehicle.SearchVehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +18,9 @@ import java.util.List;
 public class VehicleStyleController {
     @Autowired
     private VehicleStyleService vehicleStyleService;
+
+    @Autowired
+    SearchVehicleService searchVehicleService;
 
     /**
      * GET server/catalogue/vehicleStyle/{id}
@@ -39,6 +44,11 @@ public class VehicleStyleController {
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Notification> deleteVehicleStyle(@PathVariable Long id) {
         try {
+
+            List<Vehicle> vehicleList = searchVehicleService.findByVehicleStyle(id);
+            if(vehicleList.size() != 0) {
+                return new ResponseEntity<>(new Notification("There is a vehicle registered with vehicle style id " + id + "\nVehicle style wasn't deleted.", false), HttpStatus.CONFLICT);
+            }
             vehicleStyleService.deleteOneStyle(id);
             return new ResponseEntity<>(new Notification("Successfully deleted vehicle style id = " + id, true), HttpStatus.OK);
         } catch (Exception e) {
@@ -90,5 +100,10 @@ public class VehicleStyleController {
         } catch (Exception e) {
             return new ResponseEntity<>(new Notification(e.getMessage(), false), HttpStatus.CONFLICT);
         }
+    }
+
+    @PostMapping(value="/createReturnObject", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<VehicleStyle> createReturnObject(@RequestBody VehicleStyle vehicleStyle) {
+        return new ResponseEntity<VehicleStyle>(vehicleStyleService.createStyle(vehicleStyle), HttpStatus.OK);
     }
 }

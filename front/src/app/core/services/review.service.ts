@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Review } from 'src/app/shared/models/review/Review';
 import { Injectable } from '@angular/core';
 import { NotificationFromServer } from 'src/app/shared/models/Notification';
+import { Review } from 'src/app/shared/models/review/Review';
 
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 

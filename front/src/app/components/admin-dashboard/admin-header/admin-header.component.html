@@ -8,11 +8,12 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="" [routerLink]="['/dashboard']">Home</a></li>
-                <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger" href="" [routerLink]="['/users']">System users</a></li>
-                <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger" href="" [routerLink]="['/reviews']">Review requests</a></li>
-                <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger" href="" [routerLink]="['/catalogue']">Catalogue</a></li>
-                <li *ngIf="loggedUser == null"  class="nav-item"><a class="nav-link js-scroll-trigger" href="" [routerLink]="['/login']">Login</a></li>
-                <li *ngIf="loggedUser != null" class="nav-item"><a class="nav-link js-scroll-trigger" href="" (click)="logout()">Logout</a></li>
+                <li *ngIf="loggedUser != null" class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/users']">System users</a></li>
+                <li *ngIf="loggedUser != null" class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/agentRequests']">Agent requests</a></li>
+                <li *ngIf="loggedUser != null" class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/reviews']">Review requests</a></li>
+                <li *ngIf="loggedUser != null" class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/catalogue']">Catalogue</a></li>
+                <li *ngIf="loggedUser == null"  class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" [routerLink]="['/login']">Login</a></li>
+                <li *ngIf="loggedUser != null" class="nav-item"><a style=" text-shadow: 2px 2px #FF0000;" class="nav-link js-scroll-trigger" href="" (click)="logout()">Logout</a></li>
             </ul>
         </div>
     </div>

@@ -65,4 +65,12 @@ public class VehicleTransmissionService {
             throw new Exception("Can't find vehicle transmission with id = " + id);
         }
     }
+
+    public VehicleTransmission createTransmission(VehicleTransmission vehicleTransmission) {
+        if(exist(vehicleTransmission)) {
+            return vehicleTransmissionRepository.findByValue(vehicleTransmission.getValue());
+        } else {
+            return vehicleTransmissionRepository.save(vehicleTransmission);
+        }
+    }
 }

@@ -20,6 +20,7 @@ export class Request{
         this.startDate=details.startDate
         this.endDate=details.endDate
         this.ownerId=details.ownerId
+        this.totalCost=details.totalCost
     }
 
 }
