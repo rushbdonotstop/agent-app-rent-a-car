@@ -12,13 +12,14 @@
     <button class="rentButton" mat-raised-button color="accent" (click)="buy()">Rent</button>
     <button class="clearButton" mat-raised-button color="warn" (click)="clear()">Clear</button>
 </div>
+<p class="price" *ngIf="!emptyCart">Total Price : {{price}}</p>
 <section class="page-section">
     <div class="container">
         <div class="row" style="justify-content: center;">
             <mat-card style="width: 100%; box-sizing: border-box;">
                 <mat-card-title> Vehicles </mat-card-title>
                 <mat-card-content>
-                    <table mat-table [dataSource]="dataSourceRequests" class="mat-elevation-z8">
+                    <table *ngIf="dataSourceRequests" mat-table [dataSource]="dataSourceRequests" class="mat-elevation-z8">
 
                         <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -77,10 +78,11 @@
         <div class="row" style="justify-content: center;">
             <mat-card style="width: 100%; box-sizing: border-box;">
                 <mat-card-title> Bundles </mat-card-title>
-                <mat-card-content>
+                <mat-card-content *ngIf="bundle">
                     <table style="width:100%" role="list" *ngFor="let bundle of bundleList" style="margin: 10;">
+                        <button *ngIf="!isBundleEmpty(bundle)" mat-fab color="warn" (click)="removeBundle(bundle)">Remove</button>
                       
-                        <tr>
+                        <tr *ngIf="!isBundleEmpty(bundle)">
                             <th>Make</th>
                             <th>Model</th>
                             <th>Price</th>
@@ -97,7 +99,7 @@
                             <td><button mat-raised-button (click)="openDetails(request.id)">Details</button></td>
                             <td> <button mat-raised-button color="primary"
                                     (click)="openPrices(request.id)">Prices</button> </td>
-                            <td><button mat-raised-button color="warn">Remove</button></td>
+                            <td><button mat-raised-button color="warn" (click)="removeFromBundle(request,bundle)">Remove</button></td>
                         </tr>
                     </table>
                 </mat-card-content>

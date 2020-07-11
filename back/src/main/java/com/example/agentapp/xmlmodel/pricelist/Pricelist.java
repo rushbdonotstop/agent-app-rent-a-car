@@ -239,8 +239,8 @@ public class Pricelist {
                 '}';
     }
 
-    public com.example.agentapp.model.Pricelist toModel(Pricelist pricelist){
-        com.example.agentapp.model.Pricelist pricelistModel = new com.example.agentapp.model.Pricelist();
+    public com.example.agentapp.model.pricelist.Pricelist toModel(Pricelist pricelist){
+        com.example.agentapp.model.pricelist.Pricelist pricelistModel = new com.example.agentapp.model.pricelist.Pricelist();
         pricelistModel.setId(pricelist.getId());
         pricelistModel.setPrice(pricelist.getPrice());
         pricelistModel.setPriceByMile(pricelist.getPriceByMile());

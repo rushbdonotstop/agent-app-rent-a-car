@@ -1,14 +1,15 @@
 package com.example.agentapp.soapconfig.client.vehicle;
 
-import com.example.agentapp.model.*;
-import com.example.agentapp.repository.*;
-import com.example.agentapp.service.*;
+import com.example.agentapp.model.pricelist.Pricelist;
+import com.example.agentapp.model.vehicle.Vehicle;
+import com.example.agentapp.service.catalogue.*;
+import com.example.agentapp.service.location.LocationService;
+import com.example.agentapp.service.pricelist.PricelistService;
 import com.example.agentapp.xmlmodel.location.CreateLocation;
 import com.example.agentapp.xmlmodel.location.GetLocationById;
 import com.example.agentapp.xmlmodel.vehicle.CreateEverythingVehicle;
 import com.example.agentapp.xmlmodel.vehicle.CreateVehicle;
 import com.example.agentapp.xmlmodel.vehicle.GetVehicleById;
-import com.example.agentapp.xmlmodel.vehicle.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;

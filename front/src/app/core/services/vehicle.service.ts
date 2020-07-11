@@ -4,6 +4,7 @@ import { VehicleMainViewDTO } from 'src/app/shared/models/vehicle/VehicleMainVie
 import { Vehicle } from 'src/app/shared/models/vehicle/Vehicle';
 import { SearchParams } from 'src/app/shared/models/SearchParams';
 import { Image } from 'src/app/shared/models/vehicle/Image';
+import { Statistics } from 'src/app/shared/models/statistic/Statistics';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
@@ -74,7 +75,11 @@ export class VehicleService {
       params : params
     }
 
-    return this.http.get<VehicleMainViewDTO[]>('server/vehicle/search/search',  options);
+    return this.http.get<VehicleMainViewDTO[]>('server/search/search',  options);
+  }
+
+  getStatistics(userId : number) {
+    return this.http.get<Statistics>('server/statistics/'+userId, httpOptions);
   }
 
 }

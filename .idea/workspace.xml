@@ -1,7 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b436d6e-7379-4814-9096-125a944e0603" name="Default Changelist" comment="" />
+    <list default="true" id="6b436d6e-7379-4814-9096-125a944e0603" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/back/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/proxy.conf.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/proxy.conf.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/admin-dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/admin-dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/comment-requests/comment-requests.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/comment-requests/comment-requests.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/comment-requests/comment-requests.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/comment-requests/comment-requests.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/comment-requests/comment-requests.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/comment-requests/comment-requests.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/edit-permissions/edit-permissions.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/edit-permissions/edit-permissions.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/edit-permissions/edit-permissions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/edit-permissions/edit-permissions.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/edit-permissions/edit-permissions.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/edit-permissions/edit-permissions.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/view-users/view-users.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/view-users/view-users.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/view-users/view-users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/view-users/view-users.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/view-users/view-users.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/system-users/view-users/view-users.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/edit-codebook/edit-codebook.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/edit-codebook/edit-codebook.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/edit-codebook/edit-codebook.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/edit-codebook/edit-codebook.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/create-discount/create-discount.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/create-discount/create-discount.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/create-discount/create-discount.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/create-discount/create-discount.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/vehicle-statistic/vehicle-statistic.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/vehicle-statistic/vehicle-statistic.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/vehicle-statistic/vehicle-statistic.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/agent-specific-components/vehicle-statistic/vehicle-statistic.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/cart-dialog/cart-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/cart-dialog/cart-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/cart-dialog/cart-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/cart-dialog/cart-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/create-vehicle/create-vehicle.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/create-vehicle/create-vehicle.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/price-list/create-price-list/create-price-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/price-list/create-price-list/create-price-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/price-list/view-price-list/view-price-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/price-list/view-price-list/view-price-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/rent-dialog/rent-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/rent-dialog/rent-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/rent-dialog/rent-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/rent-dialog/rent-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/request-history/request-history.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/request-history/request-history.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/request-history/request-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/request-history/request-history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/request-history/request-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/request-history/request-history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/search-vehicle/search-vehicle.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/search-vehicle/search-vehicle.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/search-vehicle/search-vehicle.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/search-vehicle/search-vehicle.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/user-cart/user-cart.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/user-cart/user-cart.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/user-cart/user-cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/user-cart/user-cart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/user-cart/user-cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/user-cart/user-cart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/user-inbox/user-inbox.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/user-inbox/user-inbox.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/user-inbox/user-inbox.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/user-inbox/user-inbox.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/user-inbox/user-inbox.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/user-inbox/user-inbox.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/vehicle-details/vehicle-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/vehicle-details/vehicle-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/vehicle-details/vehicle-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/vehicle-details/vehicle-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/vehicle-review/create-review/create-review.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/vehicle-review/create-review/create-review.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/vehicle-review/create-review/create-review.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/vehicle-review/create-review/create-review.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/vehicle-review/view-vehicle-reviews/view-vehicle-reviews.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/vehicle-review/view-vehicle-reviews/view-vehicle-reviews.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/vehicle-review/view-vehicle-reviews/view-vehicle-reviews.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/vehicle-review/view-vehicle-reviews/view-vehicle-reviews.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/view-vehicles/view-vehicles.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/view-vehicles/view-vehicles.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/components/view-vehicles/view-vehicles.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/components/view-vehicles/view-vehicles.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/core/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/core/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/core/services/cart.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/core/services/cart.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/core/services/catalogue.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/core/services/catalogue.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/core/services/pricelist.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/core/services/pricelist.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/core/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/core/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/core/services/vehicle.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/core/services/vehicle.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/home/home.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/home/home.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/home/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/home/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/shared/models/cart/Request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/shared/models/cart/Request.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/shared/models/catalogue/CatalogueItem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/shared/models/catalogue/CatalogueItem.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/app/shared/models/vehicle/VehicleMainViewDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/app/shared/models/vehicle/VehicleMainViewDTO.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +82,10 @@
   <component name="ProjectId" id="1dHjz4BkuvxuSPHvsFDwO5hB1Lj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -33,13 +102,20 @@
       <option name="presentableId" value="Default" />
       <updated>1592089171718</updated>
       <workItem from="1592089175888" duration="57000" />
+      <workItem from="1594305922760" duration="2336000" />
+      <workItem from="1594478829245" duration="65000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="157" y="184" key="FileChooserDialogImpl" timestamp="1592089236181">
+    <state x="157" y="184" key="FileChooserDialogImpl" timestamp="1594478892858">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
+    <state x="-1732" y="125" key="FileChooserDialogImpl/0.0.1600.860/-1920.-98.1920.1040@-1920.-98.1920.1040" timestamp="1594318490278" />
+    <state x="157" y="184" key="FileChooserDialogImpl/0.0.1600.860/-1920.-98.1920.1040@0.0.1600.860" timestamp="1594478892858" />
     <state x="157" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1592089236181" />
   </component>
 </project>

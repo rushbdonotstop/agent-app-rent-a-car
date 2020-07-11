@@ -31,7 +31,7 @@ public class AgentappApplication {
 //
 //			System.out.println("Request from app for method create location; Server sent : " + response.getLocation().getCity().getValue());
 //
-//			com.example.agentapp.model.Location location1 = response.getLocation().toModel(response.getLocation());
+//			com.example.agentapp.model.location.Location location1 = response.getLocation().toModel(response.getLocation());
 //
 //			System.err.println(location);
 //

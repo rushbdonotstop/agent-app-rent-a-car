@@ -1,9 +1,27 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CoreModule } from '../core/core.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { MatTable, MatToolbarModule, MatInputModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatDividerModule, MatSlideToggleModule, MatSelectModule, MatOptionModule, MatProgressSpinnerModule, MatSnackBarModule, MatDialogModule, MatFormFieldModule, MatSliderModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, MatSortModule, MatPaginatorModule, MatTabsModule } from '@angular/material';
+import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule} from '@angular/material/tooltip';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { AdminDashboardComponent } from '../components/admin-dashboard/admin-dashboard.component';
+import { EditCodebookComponent } from '../components/admin-dashboard/vehicles-codebook/edit-codebook/edit-codebook.component';
+import { ViewCodebookComponent, EditFuelTypeDialog, EditMakeDialog, EditModelDialog, EditStyleDialog, EditTransmissionlDialog } from '../components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component';
+import { CommentRequestsComponent } from '../components/admin-dashboard/comment-requests/comment-requests.component';
+import { ViewUsersComponent, UserDetailsDialog } from '../components/admin-dashboard/system-users/view-users/view-users.component';
+import { RegisterAgentComponent } from '../components/admin-dashboard/system-users/register-agent/register-agent.component';
+import { EditPermissionsComponent } from '../components/admin-dashboard/system-users/edit-permissions/edit-permissions.component';
+import { AdminHeaderComponent } from '../components/admin-dashboard/admin-header/admin-header.component';
 import { SearchVehicleComponent } from '../components/search-vehicle/search-vehicle.component';
 import { ViewVehiclesComponent } from '../components/view-vehicles/view-vehicles.component';
 import { VehicleDetailsComponent } from '../components/vehicle-details/vehicle-details.component';
@@ -14,28 +32,13 @@ import { CreateVehicleComponent } from '../components/create-vehicle/create-vehi
 import { CreateReviewComponent } from '../components/vehicle-review/create-review/create-review.component';
 import { ViewVehicleReviewsComponent } from '../components/vehicle-review/view-vehicle-reviews/view-vehicle-reviews.component';
 import { CreateReportComponent } from '../components/create-report/create-report.component';
-import { VehicleStatisticComponent } from '../components/agent-specific-components/vehicle-statistic/vehicle-statistic.component';
+import { VehicleStatisticComponent } from '../components/request-history/vehicle-statistic/vehicle-statistic.component';
 import { CreatePriceListComponent } from '../components/price-list/create-price-list/create-price-list.component';
 import { ViewPriceListComponent } from '../components/price-list/view-price-list/view-price-list.component';
 import { VehicleMapComponent } from '../components/vehicle-map/vehicle-map.component';
-import { AdminDashboardComponent } from '../components/admin-dashboard/admin-dashboard.component';
-import { EditCodebookComponent } from '../components/admin-dashboard/vehicles-codebook/edit-codebook/edit-codebook.component';
-import { ViewCodebookComponent } from '../components/admin-dashboard/vehicles-codebook/view-codebook/view-codebook.component';
-import { CommentRequestsComponent } from '../components/admin-dashboard/comment-requests/comment-requests.component';
-import { ViewUsersComponent } from '../components/admin-dashboard/system-users/view-users/view-users.component';
-import { RegisterAgentComponent } from '../components/admin-dashboard/system-users/register-agent/register-agent.component';
-import { EditPermissionsComponent } from '../components/admin-dashboard/system-users/edit-permissions/edit-permissions.component';
-import { CreateDiscountComponent } from '../components/agent-specific-components/create-discount/create-discount.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CoreModule } from '../core/core.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { MatToolbarModule, MatInputModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatDividerModule, MatSlideToggleModule, MatSelectModule, MatOptionModule, MatProgressSpinnerModule, MatSnackBarModule, MatDialogModule, MatFormFieldModule, MatSliderModule, MatDatepickerModule, MatNativeDateModule, MatCheckboxModule } from '@angular/material';
-import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { AutocompleteComponent } from '../components/create-vehicle/autocomplete/autocomplete.component';
-import { MatListModule } from '@angular/material/list';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RequestDetailsComponent } from '../components/request-history/request-details/request-details.component';
+import { ConversationContentComponent } from '../components/user-inbox/conversation-content/conversation-content.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     VehicleStatisticComponent,
     CreatePriceListComponent,
     ViewPriceListComponent,
-    CreateDiscountComponent,
     VehicleMapComponent,
     AdminDashboardComponent,
     EditCodebookComponent,
@@ -64,12 +66,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ViewUsersComponent,
     RegisterAgentComponent,
     EditPermissionsComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    AdminHeaderComponent,
+    RequestDetailsComponent,
+    ConversationContentComponent,
+    EditFuelTypeDialog,
+    EditMakeDialog,
+    EditModelDialog,
+    EditStyleDialog,
+    EditTransmissionlDialog,
+    UserDetailsDialog,
+    EditPermissionsComponent
   ],
   entryComponents: [
-    VehicleDetailsComponent, ViewPriceListComponent
+    VehicleDetailsComponent, ViewPriceListComponent, RequestDetailsComponent, ConversationContentComponent,
+    EditFuelTypeDialog,
+    EditMakeDialog,
+    EditModelDialog,
+    EditStyleDialog,
+    EditTransmissionlDialog,
+    UserDetailsDialog,
+    RequestDetailsComponent,
+    EditPermissionsComponent,
+    VehicleStatisticComponent
   ],
-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -100,7 +120,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCheckboxModule,
     NgbTimepickerModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    TextFieldModule,
+    MatTabsModule,
+    MatTableModule
   ],
   exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { UserType } from 'src/app/shared/models/user/UserType';
 
 @Component({
   templateUrl: './login.component.html',
@@ -31,9 +32,14 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("userObject", JSON.stringify(user));
             this._snackBar.open("Succesful login!", "", {
               duration: 2000,
-              verticalPosition: 'top'
+              verticalPosition: 'bottom'
             });
-            this.router.navigate(['home']);
+            if(user.userDetails.userType.toString() === 'ADMINISTRATOR'){
+              this.router.navigate(['dashboard']);
+            }
+            else{
+              this.router.navigate(['home']);
+            }
           }
           else {
             this.loginInvalid = true;
@@ -42,7 +48,7 @@ export class LoginComponent implements OnInit {
           error => {
             this._snackBar.open("Server error!", "", {
               duration: 2000,
-              verticalPosition: 'top'
+              verticalPosition: 'bottom'
             });
           })
     } else {

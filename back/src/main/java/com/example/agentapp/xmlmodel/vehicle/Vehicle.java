@@ -380,9 +380,9 @@ public class Vehicle {
                 '}';
     }
 
-    public com.example.agentapp.model.Vehicle toModel(Vehicle vehicle){
+    public com.example.agentapp.model.vehicle.Vehicle toModel(Vehicle vehicle){
 
-        com.example.agentapp.model.Vehicle vehicleModel = new com.example.agentapp.model.Vehicle();
+        com.example.agentapp.model.vehicle.Vehicle vehicleModel = new com.example.agentapp.model.vehicle.Vehicle();
 
         com.example.agentapp.model.VehicleImage image = new com.example.agentapp.model.VehicleImage();
         image.setId(vehicle.getVehicleImage().getId());
