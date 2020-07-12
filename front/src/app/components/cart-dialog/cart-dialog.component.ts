@@ -6,6 +6,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 import { DialogType } from 'src/app/shared/models/cart/DialogType';
 import { DialogDTO } from './DialogDTO';
 import { DateDTO } from './DateDTO';
+import * as moment from 'moment'
 
 @Component({
   selector: 'pm-cart-dialog',
@@ -21,6 +22,7 @@ export class CartDialogComponent implements OnInit {
   model: any
   price: any
   owner: any
+  ownerId : any
   dialog: DialogType
 
   startDate: Date
@@ -28,12 +30,21 @@ export class CartDialogComponent implements OnInit {
 
   datesValid: any
 
-  public min = new Date();
+  public min = moment(new Date())
+  .add(2,'d') 
+  .toDate(); 
+
+  public minEndDate = moment(new Date())
+  .add(2,'d') 
+  .toDate(); 
+
+
   public myFilter = (d: Date): boolean => {
     const day = d.getDay();
     // Prevent Sunday from being selected.
     return day !== 0
   }
+
 
   constructor(
     public dialogRef: MatDialogRef<RentDialogComponent>,
@@ -46,6 +57,7 @@ export class CartDialogComponent implements OnInit {
     this.model = this.data.model
     this.price = this.data.price
     this.owner = this.data.ownerUsername
+    this.ownerId=this.data.ownerId
     this.dialog = this.data.dialog
     this.datesValid = true
   }
@@ -57,7 +69,7 @@ export class CartDialogComponent implements OnInit {
 
   addToCart() {
     if (this.startDate != null && this.endDate != null) {
-      var request = new VehicleMainViewDTO(this.id, this.make, this.model, this.price, this.owner)
+      var request = new VehicleMainViewDTO(this.id, this.make, this.model, this.price, this.owner, this.ownerId)
       this.rentService.addItemToCart(request, this.startDate, this.endDate)
       this._snackBar.open("Item added to cart", "", {
         duration: 2000,
@@ -72,6 +84,10 @@ export class CartDialogComponent implements OnInit {
 
   addToBundle() {
     this.dialogRef.close(new DateDTO(this.startDate, this.endDate))
+  }
+
+  startDateSelected(val){
+    this.minEndDate=val
   }
 
 
