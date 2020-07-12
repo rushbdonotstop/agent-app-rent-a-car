@@ -1,11 +1,12 @@
 package com.example.agentapp;
 
-import com.example.agentapp.model.MessageForQueue;
-import com.example.agentapp.service.CoordinateService;
+import com.example.agentapp.model.vehicle.script.Message;
+import com.example.agentapp.service.vehicle.CoordinateService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
@@ -36,11 +37,18 @@ public class Receiver {
         Message message = mapper.readValue(messageStringJSON, new TypeReference<Message>() {
         });
         if(message.getHeaders().getAuthorization()!=null) { System.out.println("Received <" + message.getBody() + ">");
-            Claims claims = secretService.decodeJWT(message.getHeaders().getAuthorization());
-            System.out.println("vehicleId:"+claims.get("jti"));
-            //socket.echoTextMessage(message.getBody());
-            this.template.convertAndSend("/chat", message.getBody()+", "+claims.get("jti"));
+            try
+            {Claims claims = secretService.decodeJWT(message.getHeaders().getAuthorization());
+                System.out.println("vehicleId:"+claims.get("jti"));
+                //socket.echoTextMessage(message.getBody());
+                this.template.convertAndSend("/chat", message.getBody()+", "+claims.get("jti"));
+            }
+            catch (ExpiredJwtException e){
+                System.out.println("Token expired");
+            }
+
         }
+
         latch.countDown();
     }
 

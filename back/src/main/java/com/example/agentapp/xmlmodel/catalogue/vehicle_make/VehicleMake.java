@@ -97,8 +97,8 @@ public class VehicleMake {
                 '}';
     }
 
-    public com.example.agentapp.model.VehicleMake toModel(VehicleMake vehicleMake){
-        com.example.agentapp.model.VehicleMake vehicleMakeModel = new com.example.agentapp.model.VehicleMake();
+    public com.example.agentapp.model.catalogue.VehicleMake toModel(VehicleMake vehicleMake){
+        com.example.agentapp.model.catalogue.VehicleMake vehicleMakeModel = new com.example.agentapp.model.catalogue.VehicleMake();
         vehicleMakeModel.setId(vehicleMake.getId());
         vehicleMakeModel.setValue(vehicleMake.getValue());
         return vehicleMakeModel;

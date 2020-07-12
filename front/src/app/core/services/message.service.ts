@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { User } from 'src/app/shared/models/user/User';
-import { Conversation } from 'src/app/shared/models/message/Conversation';
-import { Message } from 'src/app/shared/models/message/Message';
 import { NotificationFromServer } from 'src/app/shared/models/Notification';
+import { Conversation } from 'src/app/shared/models/message/Conversation';
 import { NewMessageDTO } from 'src/app/shared/models/message/NewMessageDTO';
+import { Message } from 'src/app/shared/models/message/Message';
 
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
