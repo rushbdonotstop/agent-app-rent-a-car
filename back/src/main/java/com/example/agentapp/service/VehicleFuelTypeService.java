@@ -65,4 +65,12 @@ public class VehicleFuelTypeService {
             throw new Exception("Can't find fuel type with id = " + id);
         }
     }
+
+    public VehicleFuelType createFuelType(VehicleFuelType vehicleFuelType) {
+        if(exist(vehicleFuelType)) {
+            return vehicleFuelTypeRepository.findByValue(vehicleFuelType.getValue());
+        } else {
+            return vehicleFuelTypeRepository.save(vehicleFuelType);
+        }
+    }
 }

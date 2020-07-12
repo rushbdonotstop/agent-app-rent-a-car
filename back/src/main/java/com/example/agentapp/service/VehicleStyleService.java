@@ -65,4 +65,12 @@ public class VehicleStyleService {
             throw new Exception("Can't find vehicle style with id = " + id);
         }
     }
+
+    public VehicleStyle createStyle(VehicleStyle vehicleStyle) {
+        if(exist(vehicleStyle)) {
+            return vehicleStyleRepository.findByValue(vehicleStyle.getValue());
+        } else {
+            return  vehicleStyleRepository.save(vehicleStyle);
+        }
+    }
 }

@@ -1,23 +1,35 @@
 package com.example.agentapp.dto;
 
+import java.time.LocalDateTime;
+
 public class VehicleMainViewDTO {
 
     private Long id;
     private String make;
     private String model;
     private float price;
+    private float averageRating;
+    private int mileage;
     private String ownerUsername;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private Long ownerId;
+
 
     public VehicleMainViewDTO() {
     }
 
-    public VehicleMainViewDTO(Long id, String make, String model, float price, String ownerUsername) {
+    public VehicleMainViewDTO(Long id, String make, String model, float price, float averageRating, int mileage, String ownerUsername, LocalDateTime startDate, LocalDateTime endDate, Long ownerId) {
         this.id = id;
         this.make = make;
         this.model = model;
         this.price = price;
+        this.averageRating = averageRating;
+        this.mileage = mileage;
         this.ownerUsername = ownerUsername;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.ownerId = ownerId;
     }
 
     public Long getId() {
@@ -68,6 +80,38 @@ public class VehicleMainViewDTO {
         this.ownerId = ownerId;
     }
 
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(float averageRating) {
+        this.averageRating = averageRating;
+    }
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
     @Override
     public String toString() {
         return "VehicleMainViewDTO{" +
@@ -75,7 +119,12 @@ public class VehicleMainViewDTO {
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", price=" + price +
+                ", averageRating=" + averageRating +
+                ", mileage=" + mileage +
                 ", ownerUsername='" + ownerUsername + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", ownerId=" + ownerId +
                 '}';
     }
 }
