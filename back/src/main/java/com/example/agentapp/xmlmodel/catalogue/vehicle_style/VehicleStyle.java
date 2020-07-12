@@ -97,8 +97,8 @@ public class VehicleStyle {
                 '}';
     }
 
-    public com.example.agentapp.model.VehicleStyle toModel(VehicleStyle vehicleStyle){
-        com.example.agentapp.model.VehicleStyle vehicleStyleModel = new com.example.agentapp.model.VehicleStyle();
+    public com.example.agentapp.model.catalogue.VehicleStyle toModel(VehicleStyle vehicleStyle){
+        com.example.agentapp.model.catalogue.VehicleStyle vehicleStyleModel = new com.example.agentapp.model.catalogue.VehicleStyle();
         vehicleStyleModel.setId(vehicleStyle.getId());
         vehicleStyleModel.setValue(vehicleStyle.getValue());
         return vehicleStyleModel;

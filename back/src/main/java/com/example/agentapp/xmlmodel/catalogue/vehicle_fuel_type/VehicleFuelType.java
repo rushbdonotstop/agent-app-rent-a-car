@@ -95,8 +95,8 @@ public class VehicleFuelType {
                 '}';
     }
 
-    public com.example.agentapp.model.VehicleFuelType toModel(VehicleFuelType vehicleFuelType){
-        com.example.agentapp.model.VehicleFuelType vehicleFuelTypeModel = new com.example.agentapp.model.VehicleFuelType();
+    public com.example.agentapp.model.catalogue.VehicleFuelType toModel(VehicleFuelType vehicleFuelType){
+        com.example.agentapp.model.catalogue.VehicleFuelType vehicleFuelTypeModel = new com.example.agentapp.model.catalogue.VehicleFuelType();
         vehicleFuelTypeModel.setId(vehicleFuelType.getId());
         vehicleFuelTypeModel.setValue(vehicleFuelType.getValue());
         return vehicleFuelTypeModel;

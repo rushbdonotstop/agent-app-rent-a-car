@@ -1,5 +1,6 @@
 package com.example.agentapp;
 
+import com.example.agentapp.rabbit.EmailBinding;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -9,12 +10,12 @@ import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 
 @EnableScheduling
+@EnableBinding(EmailBinding.class)
 @SpringBootApplication
 public class AgentappApplication {
 
@@ -22,16 +23,9 @@ public class AgentappApplication {
 		SpringApplication.run(AgentappApplication.class, args);
 	}
 
-
 	static final String topicExchangeName = "spring-boot-exchange";
 
 	static final String queueName = "spring-boot";
-
-	@Bean
-	@LoadBalanced
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
 
 	// method creates an AMQP queue
 	@Bean
@@ -92,7 +86,7 @@ public class AgentappApplication {
 //
 //			System.out.println("Request from app for method create location; Server sent : " + response.getLocation().getCity().getValue());
 //
-//			com.example.agentapp.model.Location location1 = response.getLocation().toModel(response.getLocation());
+//			com.example.agentapp.model.location.Location location1 = response.getLocation().toModel(response.getLocation());
 //
 //			System.err.println(location);
 //

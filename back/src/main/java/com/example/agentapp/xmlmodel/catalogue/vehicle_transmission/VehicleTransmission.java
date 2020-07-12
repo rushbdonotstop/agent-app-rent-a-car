@@ -97,8 +97,8 @@ public class VehicleTransmission {
                 '}';
     }
 
-    public com.example.agentapp.model.VehicleTransmission toModel(VehicleTransmission vehicleTransmission){
-        com.example.agentapp.model.VehicleTransmission vehicleTransmissionModel = new com.example.agentapp.model.VehicleTransmission();
+    public com.example.agentapp.model.catalogue.VehicleTransmission toModel(VehicleTransmission vehicleTransmission){
+        com.example.agentapp.model.catalogue.VehicleTransmission vehicleTransmissionModel = new com.example.agentapp.model.catalogue.VehicleTransmission();
         vehicleTransmissionModel.setId(vehicleTransmission.getId());
         vehicleTransmissionModel.setValue(vehicleTransmission.getValue());
         return vehicleTransmissionModel;

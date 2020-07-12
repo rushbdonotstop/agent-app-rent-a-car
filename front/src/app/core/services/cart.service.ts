@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Cart } from 'src/app/shared/models/cart/Cart';
-import { Vehicle } from 'src/app/shared/models/vehicle/Vehicle';
-import { Request } from 'src/app/shared/models/cart/Request';
 import { VehicleMainViewDTO } from 'src/app/shared/models/vehicle/VehicleMainViewDTO';
 import { RequestAndVehicle } from 'src/app/shared/models/cart/RequestAndVehicle';
 import { DetailedCart } from 'src/app/shared/models/cart/DetailedCart';
 import { BundleAndVehicle } from 'src/app/shared/models/cart/BundleAndVehicle';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
-import { User } from 'src/app/shared/models/user/User';
 import { manualRequest } from 'src/app/shared/models/cart/manualRequest';
 
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
@@ -17,7 +13,7 @@ const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/js
 @Injectable({
   providedIn: 'root'
 })
-
+//TODO : get owner id
 export class CartService {
 
   constructor(private http: HttpClient, private loginService: UserService) { }

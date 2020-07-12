@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { VehicleLocation } from 'src/app/shared/models/location/VehicleLocation';
-import { State } from 'src/app/shared/models/location/State';
 import { City } from 'src/app/shared/models/location/City';
+import { State } from 'src/app/shared/models/location/State';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
 
