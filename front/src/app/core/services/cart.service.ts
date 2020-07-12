@@ -35,7 +35,7 @@ export class CartService {
       var request = new RequestAndVehicle(vehicle)
       request.startDate = startDate
       request.endDate = endDate
-      request.ownerId = 1
+      request.ownerId = vehicle.ownerId
       oldCart.requests.push(request)
       localStorage.setItem('cart', JSON.stringify(oldCart))
       console.log(localStorage.getItem('cart'))
@@ -44,12 +44,15 @@ export class CartService {
 
   addBundleToCart(bundleList: VehicleMainViewDTO[]) {
     var cart = localStorage.getItem('cart')
+    console.log(bundleList)
     if (cart == null) {
       var newCart = new DetailedCart()
       var bundle = new BundleAndVehicle()
       bundle.id=null
       for (let b of bundleList) {
-        bundle.requests.push(new RequestAndVehicle(b))
+        var bun = new RequestAndVehicle(b)
+        bun.ownerId = bundleList[0].ownerId
+        bundle.requests.push(bun)
       }
       newCart.bundles.push(bundle)
       localStorage.setItem('cart', JSON.stringify(newCart))
@@ -60,10 +63,13 @@ export class CartService {
       var bundle = new BundleAndVehicle()
       bundle.id=null
       for (let b of bundleList) {
-        bundle.requests.push(new RequestAndVehicle(b))
+        var bun = new RequestAndVehicle(b)
+        bun.ownerId = bundleList[0].ownerId
+        bundle.requests.push(bun)
       }
       oldCart.bundles.push(bundle)
       localStorage.setItem('cart', JSON.stringify(oldCart))
+      console.log(localStorage.getItem('cart'))
     }
   }
 
@@ -89,7 +95,7 @@ export class CartService {
     var cart = new Cart(detailedCart, userId)
     console.log(detailedCart)
     console.log(cart)
-    return this.http.post<boolean>('server/request', JSON.stringify(cart), httpOptions);
+    return this.http.post<boolean>('server/request/request', JSON.stringify(cart), httpOptions);
   }
 
   newCart() {
@@ -97,7 +103,7 @@ export class CartService {
   }
 
   manualRent(request: manualRequest) {
-    return this.http.post<boolean>('server/request/physicalRent', JSON.stringify(request), httpOptions);
+    return this.http.post<boolean>('server/request/request/physicalRent', JSON.stringify(request), httpOptions);
   }
 
 }
