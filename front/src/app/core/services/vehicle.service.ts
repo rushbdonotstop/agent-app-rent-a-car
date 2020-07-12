@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { SearchParams } from 'src/app/shared/models/SearchParams';
+import { Statistics } from 'src/app/shared/models/statistic/Statistics';
 import { VehicleMainViewDTO } from 'src/app/shared/models/vehicle/VehicleMainViewDTO';
 import { Vehicle } from 'src/app/shared/models/vehicle/Vehicle';
-import { SearchParams } from 'src/app/shared/models/SearchParams';
 import { Image } from 'src/app/shared/models/vehicle/Image';
 
 const httpOptions = {headers: new HttpHeaders({'Content-Type' : 'application/json'})};
@@ -14,16 +15,20 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
+  getAllFromUser(id: number) {
+    return this.http.get<VehicleMainViewDTO[]>('server/search/user/'+id, httpOptions);
+  }
+
   getAll() {
-    return this.http.get<VehicleMainViewDTO[]>('server/vehicle/search',  httpOptions);
+    return this.http.get<VehicleMainViewDTO[]>('server/search',  httpOptions);
   }
 
   getVehicle(vehicleId : number) {
-    return this.http.get<Vehicle>('server/vehicle/vehicle/'+vehicleId,  httpOptions);
+    return this.http.get<Vehicle>('server/vehicle/'+vehicleId,  httpOptions);
   }
 
   getImage(imageName : string){
-    return this.http.get<Image>('server/vehicle/vehicle/image/' + imageName,  httpOptions);
+    return this.http.get<Image>('server/vehicle/image/' + imageName,  httpOptions);
   }
 
   uploadPicture(uploadImageData : any) {
@@ -32,11 +37,11 @@ export class VehicleService {
     const options = {
       params : params
     }
-    return this.http.post<any>('server/vehicle/vehicle/image/upload',  options);
+    return this.http.post<any>('server/vehicle/image/upload',  options);
   }
 
   create(vehicle : Vehicle) {
-    return this.http.post<any>('server/vehicle/vehicle/', vehicle,  httpOptions);
+    return this.http.post<any>('server/vehicle/', vehicle,  httpOptions);
   }
 
   search(searchParams : SearchParams) {
@@ -74,7 +79,11 @@ export class VehicleService {
       params : params
     }
 
-    return this.http.get<VehicleMainViewDTO[]>('server/vehicle/search/search',  options);
+    return this.http.get<VehicleMainViewDTO[]>('server/search/search',  options);
+  }
+
+  getStatistics(userId : number) {
+    return this.http.get<Statistics>('server/statistics/'+userId, httpOptions);
   }
 
 }

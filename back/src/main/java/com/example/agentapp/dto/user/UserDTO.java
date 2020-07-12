@@ -1,8 +1,6 @@
 package com.example.agentapp.dto.user;
 
-
 public class UserDTO {
-
 
     private Long id;
     private String username;
@@ -33,7 +31,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return "OwnerDTO{" +
+        return "UserDTO{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 '}';

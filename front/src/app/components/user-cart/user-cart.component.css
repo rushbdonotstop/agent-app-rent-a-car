@@ -39,9 +39,31 @@ table {
 }
 
 table {
-  table-layout: fixed ;
-  width: 100% ;
+  table-layout: fixed;
+  width: 100%;
 }
+
 td {
-  width: 25% ;
-} 
+  width: 25%;
+}
+
+.price {
+  text-align: center;
+  margin-top: 20px;
+  color:rgb(85, 10, 10);
+  font-size: 20px;
+}
+
+.discount {
+  text-align: center;
+  margin-top: 20px;
+  color:darkgoldenrod;
+  font-size: 20px;
+}
+
+.neutral {
+  text-align: center;
+  margin-top: 20px;
+  color:rgb(54, 54, 54);
+  font-size: 20px;
+}

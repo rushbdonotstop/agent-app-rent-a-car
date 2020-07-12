@@ -1,5 +1,7 @@
 package com.example.agentapp.dto.request;
 
+import com.example.agentapp.model.request.Request;
+import com.example.agentapp.model.enums.Status;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +17,13 @@ public class RequestForVehicleDTO {
 
     private Long vehicleId;
 
+    public RequestForVehicleDTO(Request request) {
+        this.id = request.getId();
+        this.startDate = request.getStartDate();
+        this.endDate = request.getEndDate();
+        this.status = request.getStatus();
+        this.vehicleId = request.getVehicleId();
+    }
 
     public RequestForVehicleDTO() {
     }

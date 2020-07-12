@@ -1,0 +1,37 @@
+package com.example.agentapp.service.request;
+
+import com.example.agentapp.model.request.Report;
+import com.example.agentapp.repository.request.ReportRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ReportService {
+
+    @Autowired
+    ReportRepository reportRepository;
+
+    public Report addReport(Report report) {
+        if(reportRepository.findByVehicleIdAndStartDateAndEndDate(report.getVehicleId(), report.getStartDate(), report.getEndDate()).size() == 0)
+            return this.reportRepository.save(report);
+        else
+            return null;
+    }
+
+    public List<Report> findAll() {
+        return this.reportRepository.findAll();
+    }
+
+    public Optional<Report> findById(Long id) {
+        return this.reportRepository.findById(id);
+    }
+
+    public List<Report> findAllByVehicleId(Long vehicleId) {
+        List<Report> reportList = reportRepository.findAllByVehicleId(vehicleId);
+        return reportList;
+    }
+
+}
