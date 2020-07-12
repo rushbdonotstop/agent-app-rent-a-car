@@ -307,7 +307,6 @@ export class ViewCodebookComponent implements OnInit {
   }
 
   addModel() {
-    alert(JSON.stringify(this.selectedMake));
     if(!this.newModel.value) {
       this.snackBar.open("Enter vehicle model value!", "", {
         duration: 2000,

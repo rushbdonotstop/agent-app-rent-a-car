@@ -26,10 +26,8 @@ export class RegisterAgentComponent implements OnInit {
         requests.forEach(request => {
           this.userService.getUser(request.userId).subscribe(
             user => {
-              alert(JSON.stringify(user));
               this.userService.getUserDetails(user.id).subscribe(details => {
                 console.log(JSON.stringify(details))
-                alert(JSON.stringify(details))
                 user.userDetails = details;
                 let agentReques = new AgentRequestTableData();
                 agentReques.agentRequest = request;
