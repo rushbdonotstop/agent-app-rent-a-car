@@ -388,7 +388,7 @@ export class CreateVehicleComponent implements OnInit {
         uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
   
         // Make a call to the Spring Boot Application to save the image
-        this.httpClient.post('server/vehicle/vehicle/image/upload', uploadImageData, { observe: 'response' })
+        this.httpClient.post('server/vehicle/image/upload', uploadImageData, { observe: 'response' })
           .subscribe((response) => {
             var location = new VehicleLocation()
             var splitted = this.formattedAddress.split(',')
